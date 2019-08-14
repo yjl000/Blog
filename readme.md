@@ -8,3 +8,5 @@
 
 [第一个node程序](https://github.com/yjl000/Blog/blob/master/node基础与进阶/基础/hello_node.md)
 
+[node模块化](https://github.com/yjl000/Blog/blob/master/node基础与进阶/基础/模块化.md)
+
