@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+var msg = "hello world!";
+var num = -2;
+var obj = {};
+var test = null;
+
+if (msg) {
+    console.log('String is true'); // String is true
+}
+
+if (num) {
+    console.log('除了0和NAN,其他数值都是true'); // 除了0和NAN,其他数值都是true
+}
+
+if (obj) {
+    console.log('空对象？！'); // 空对象？！
+}
+
+if (test) { // 没有进入到这里
+    console.log('false!')
+}
+
+if (Object.keys(obj).length === 0) {
+    console.log('object的判断方法之一')
+}
+</script>
