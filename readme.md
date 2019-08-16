@@ -16,7 +16,13 @@
 
 [基本概念](https://github.com/yjl000/Blog/blob/master/js基础与进阶/基础/基本概念.md)
 
+[数据类型](https://github.com/yjl000/Blog/blob/master/js基础与进阶/基础/数据类型.md)
 
+[Undefined和Null](https://github.com/yjl000/Blog/blob/master/js基础与进阶/基础/Undefined和Null.md)
+
+[Boolean类型](https://github.com/yjl000/Blog/blob/master/js基础与进阶/基础/Boolean类型.md)
+
+[Number、String、Object类型](https://github.com/yjl000/Blog/blob/master/js基础与进阶/基础/Number、String、Object类型.md)
 
 ### 读后感
 

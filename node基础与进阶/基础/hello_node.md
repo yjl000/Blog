@@ -31,3 +31,4 @@ node first.js
 就会出现js代码运行的结果。
 
 ![1565664123448](https://github.com/yjl000/Blog/blob/master/node基础与进阶/基础/image/1565664123448.png)
+

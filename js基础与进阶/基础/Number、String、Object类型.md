@@ -62,7 +62,7 @@ console.log(isNaN(obj)); // true
 
 js中有三个方法可以将非数值转成字符：Number()、parseInt()、和parseFloat()。Number()的规则太多，直接截图如下图（截图至红宝书）：
 
-![1565948727581](E:\bolg\Blog\js基础与进阶\基础\image\1565948727581.png)
+![1565948727581]((https://github.com/yjl000/Blog/blob/master/js基础与进阶/基础/image/1565948727581.png)
 
 我们上点代码比较好：
 
@@ -114,7 +114,7 @@ console.log(parseInt("")); // NaN
 
 String类型用于表示由零个或多个16位的Unicode字符组成的字符序列，也叫字符串。这里主要注意的是字符串中的一些转义字符，如下图：
 
-![1565951262798](E:\bolg\Blog\js基础与进阶\基础\image\1565951262798.png)
+![1565951262798](https://github.com/yjl000/Blog/blob/master/js基础与进阶/基础/image/1565951262798.png)
 
 既然有非数值转数值，那么当然也有非字符串转字符串了，使用比较多的方法是**toString()**。我们同样通过代码来看这个方法的作用：
 
@@ -147,4 +147,5 @@ String()可以将如何类型转为字符串。调用String()时，会先判断�
 
 这个类型比较复杂，这里贴出其属性和方法，其他的部分后面会有详细介绍
 
-![1565952626487](E:\bolg\Blog\js基础与进阶\基础\image\1565952626487.png)
+![1565952626487](https://github.com/yjl000/Blog/blob/master/js基础与进阶/基础/image/1565952626487.png)
+
