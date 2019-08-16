@@ -62,7 +62,7 @@ console.log(isNaN(obj)); // true
 
 js中有三个方法可以将非数值转成字符：Number()、parseInt()、和parseFloat()。Number()的规则太多，直接截图如下图（截图至红宝书）：
 
-![1565948727581]((https://github.com/yjl000/Blog/blob/master/js基础与进阶/基础/image/1565948727581.png)
+![1565948727581](https://github.com/yjl000/Blog/blob/master/js基础与进阶/基础/image/1565948727581.png)
 
 我们上点代码比较好：
 
