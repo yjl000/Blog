@@ -9,6 +9,8 @@
 事实胜于雄辩，先上代码（面试的时候，有条件（一张纸一支笔就行）最好是自己写出简单的代码，对着代码讲，逻辑就清晰很多了）：
 
 ```javas
+// \进阶笔记\code\eventLoop.js
+
 console.log('main start > ');
 
 new Promise((resolve, reject) => {
@@ -28,6 +30,8 @@ setTimeout(() => {
 这是最简单的情况，不管是node还是浏览器，结果都是一样的，再看第二种情况：
 
 ```javascript
+// \进阶笔记\code\eventLoop.js
+
 console.log('main start > ');
 
 setTimeout(() => {
@@ -90,9 +94,7 @@ setTimeout(() => {
 
 附录：node官网的6个阶段图片：
 
-![3592443-f9186849ae10d9cc](E:\bolg\Blog\进阶笔记\images\3592443-f9186849ae10d9cc.png)
-
-
+![3592443-f9186849ae10d9cc](https://github.com/yjl000/Blog/blob/master/进阶笔记/images/3592443-f9186849ae10d9cc.png)
 
 各个阶段的作用如下：
 
@@ -107,3 +109,5 @@ poll:等待新的I/O事件，node在一些特殊情况下会阻塞在这里
 check: setImmediate()的回调会在这个阶段执行
 
 close callbacks: 例如socket.on('close', ...)这种close事件的回调
+
+另外node进程有一个process.nextTick()的函数，这个函数不在事件循环之内的，它有自己的队列，每个阶段完成之后如果有这个函数就会执行。

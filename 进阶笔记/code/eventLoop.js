@@ -33,3 +33,7 @@ setTimeout(() => {
     })
     console.log('macro2 end ');
 }, 0)
+
+process.nextTick(() => {
+    console.log('second loop')
+})
