@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+var num1 = 5;
+var num2 = 5;
+var num3 = --num1 + num2;
+var num4 = num1 + num2;
+console.log(num3); // 9
+console.log(num4); // 9
+
+var num1 = 5;
+var num2 = 5;
+var num3 = num1-- + num2;
+var num4 = num1 + num2;
+console.log(num3); // 10
+console.log(num4); // 9
+
+var n1 = '1';
+var s = 'a';
+var flag = true;
+var f = 0.5;
+var obj = {
+    valueOf: function () {
+        return -1
+    }
+};
+
+console.log(++n1); // 2
+console.log(++s); // NaN
+console.log(++flag); // 2
+console.log(--f); // -0.5
+console.log(--obj); //-2
+</script>
