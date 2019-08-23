@@ -11,14 +11,14 @@
 ##### NPM
 
 ```javascript
-npm i countdown
+npm i kenyang-countdown-vue
 ```
 
 ##### 引入插件
 
 ```javascript
 import Vue from 'vue';
-import countdown from 'countdown';
+import countdown from 'kenyang-countdown-vue';
 
 Vue.use(countdown);
 ```
@@ -51,4 +51,3 @@ Vue.use(countdown);
 ##### methods
 
 getTime，回调，如果设置了is-actual-cb为true，则实时返回时间（可用于活动开始前多少时间提示），否则倒计时结束才会返回值：‘over’。
-

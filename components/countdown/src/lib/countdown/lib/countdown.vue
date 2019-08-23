@@ -1,8 +1,8 @@
 <template>
   <div>
      <ul class="timeWrapper">
-       <li v-show="showHour"><span :style="{background:themeColor,fontSize:fontSize + 'px'}">{{cHour}}</span><span :style="{color:themeColor,fontSize:fontSize + 'px'}"> :</span></li>
-       <li><span :style="{background:themeColor,fontSize:fontSize + 'px'}">{{cMinute}}</span><span :style="{color:themeColor,fontSize:fontSize + 'px'}"> :</span></li>
+       <li v-show="showHour"><span :style="{background:themeColor,fontSize:fontSize + 'px'}">{{cHour}}</span><span :style="{color:themeColor,fontSize:fontSize + 'px'}">:</span></li>
+       <li><span :style="{background:themeColor,fontSize:fontSize + 'px'}">{{cMinute}}</span><span :style="{color:themeColor,fontSize:fontSize + 'px'}">:</span></li>
        <li><span :style="{background:themeColor,fontSize:fontSize + 'px'}">{{second}}</span></li>
      </ul>
   </div>
@@ -125,6 +125,7 @@ export default {
     font-family: '微软雅黑';
   }
   ul {
+    display: flex;
     list-style-type: none;
     padding: 0;
   }
@@ -140,6 +141,7 @@ export default {
   }
 
   li > span:nth-of-type(2){
+    margin: 0 2px;
     font-weight: 600;
   }
 

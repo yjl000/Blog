@@ -15,14 +15,14 @@
 ##### NPM
 
 ```javascript
-npm i countdown
+npm i kenyang-countdown-vue
 ```
 
 ##### 引入插件
 
 ```javascript
 import Vue from 'vue';
-import countdown from 'countdown';
+import countdown from 'kenyang-countdown-vue';
 
 Vue.use(countdown);
 ```
