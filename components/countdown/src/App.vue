@@ -3,7 +3,7 @@
     <countdown 
     size="small" 
     theme-color="red" 
-    hour="0" minute='1' 
+    hour="24" minute='0' 
     :is-actual-cb="isActualCb" 
     :is-show-hour="flag" 
     @getTime='getTime'
