@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+var obj1 = {
+    name: 'yang'
+};
+var obj2 = {
+    age: 12
+};
+var a1 = true, a2 = null, a3 = undefined, a4 = NaN, test = 'test';
+console.log(obj1 && test); // 'test'
+console.log(test && obj2); // {age: 12}
+console.log(obj1 && obj2); // {age: 12}
+console.log(test && a2); // null
+console.log(a3 && test); // undefined
+console.log(a4 && a1); // NaN
+console.log('********************************************')
+
+console.log(!false); // true
+console.log(!'test'); // false
+console.log(!0); // true
+console.log(!NaN); // true
+console.log(!""); // true
+console.log(!10); // false
+console.log(!undefined); // true
+console.log(!null); // true
+console.log('********************************************')
+console.log(!!false); // true
+console.log(!!'test'); // false
+console.log(!!0); // true
+console.log(!!NaN); // true
+console.log(!!""); // true
+console.log(!!10); // false
+console.log(!!undefined); // true
+console.log(!!null); // true
+
+</script>

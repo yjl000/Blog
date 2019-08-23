@@ -11,3 +11,9 @@ console.log('这是第一轮循环事件');
 // 这是第一轮循环事件
 
 // 这里是下一轮循环事件
+
+if (typeof window === 'undefined') {
+    console.log('node');
+} else {
+    console.log('browser');
+}
