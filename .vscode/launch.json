@@ -8,7 +8,7 @@
             "type": "node",
             "request": "launch",
             "name": "Launch Program",
-            "program": "${workspaceFolder}\\node基础与进阶\\基础\\code\\module_main.js"
+            "program": "${workspaceFolder}\\node基础与进阶\\基础\\code\\fs.js"
         }
     ]
 }

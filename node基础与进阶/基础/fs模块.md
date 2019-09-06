@@ -44,3 +44,56 @@ fs.writeFile('write.txt', data, (err) => {
 
 运行代码，会发现，node会先查找有没有这个write.txt这个文件，如果没有就创建，如果有，就**替换**掉里面的内容。没错，是替换。writeFile会把文件的内容都替换掉，如果要在后面添加，就要用**fs.open()**，并且第二个参数用'a'，表示append到内容后面。
 
+#### fs.stat()与fs.Stats类
+
+既然要读写文件，那么获取文件信息是必不可少的。我们有时候想获取文件大小来判断是否满足要求，有时候要获取文件的创建时间来判断是不是最新的。这些，就需要**fs.stat()**来实现。fs.stat()有三个参数，第一个是文件路径，第二个是是否设置返回的**stats**对象中的数值是否为**bigint**类型。默认是false。第三个是回调，回调函数的参数和之前的一样，第一个是错误时的信息。第二个是成功是返回的**stats**类。这个**stats**对象就包含这个文件的所有信息。下面是官网的一张**stats**对象的属性表，这里只取stats中数值为int类型的：
+
+```javascript
+Stats {
+  dev: 2114,
+  ino: 48064969,
+  mode: 33188,
+  nlink: 1,
+  uid: 85,
+  gid: 100,
+  rdev: 0,
+  size: 527,
+  blksize: 4096,
+  blocks: 8,
+  atimeMs: 1318289051000.1,
+  mtimeMs: 1318289051000.1,
+  ctimeMs: 1318289051000.1,
+  birthtimeMs: 1318289051000.1,
+  atime: Mon, 10 Oct 2011 23:24:11 GMT,
+  mtime: Mon, 10 Oct 2011 23:24:11 GMT,
+  ctime: Mon, 10 Oct 2011 23:24:11 GMT,
+  birthtime: Mon, 10 Oct 2011 23:24:11 GMT }
+```
+
+比如我们要获取文件的大小的时候，代码如下：
+
+```javascript
+// node基础与进阶/基础/code/fs.js
+
+fs.stat('demo.txt', function(err, stats){
+    if (err) {
+        console.log(err)
+    } else {
+        // 是否是对象块
+        console.log(stats.isBlockDevice());
+        // 是否是文件夹
+        console.log(stats.isDirectory());
+        // 是否是文件
+        console.log(stats.isFile());
+        if (stats.isFile()) {
+            console.log(stats.dev); // 3091812596
+            // 获取文件大小
+            console.log(stats.size); // 24
+        }
+    }
+})
+```
+
+用类似的方法就可以获取到你想要的的文件的信息了。
+
+当然，fs还有很多的骚操作。这里就不一一介绍了。感兴趣的可以去官网查文档，我觉得node的官网还是很详细的。
