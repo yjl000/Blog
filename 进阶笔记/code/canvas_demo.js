@@ -5,7 +5,7 @@ const ctx = canvas.getContext('2d');
 // 创建个人信息区
 // 1. 先创建区域大小、位置、背景
 ctx.fillStyle = '#ffffff'; // 这里的样式对下一个fillstyle前的元素都有效
-ctx.fillRect(20, 20, 297, 300);
+ctx.fillRect(20, 20, 297, 240);
 
 // 2.创建头像（引入图片）
 let img  = new Image();
@@ -28,7 +28,7 @@ ctx.fillText(post, 110, 86);
 // 绘制笑脸logo
 ctx.beginPath();
 ctx.arc(65, 125, 16, 0, Math.PI*2, true); // 脸  以（65， 125）为圆心，16为半径，逆时针画一个满圆。
-ctx.moveTo(73, 125); // 将画笔提起，在（73, 125）处落下
+// ctx.moveTo(73, 125); // 将画笔提起，在（73, 125）处落下
 ctx.arc(65, 125, 8, 0, Math.PI, false); // 口   以（65, 125）为圆心，8位半径，顺时针画一个半圆；
 ctx.moveTo(61, 118);
 ctx.arc(58, 118, 3, 0, Math.PI*2, true); // 左眼
@@ -56,10 +56,31 @@ ctx.fill(); // 填充
 ctx.fillText(tel, 80, 170);
 
 // 线性渐变logo 
-const lingrad = ctx.createLinearGradient(80, 190, 90, 200);
+const lingrad = ctx.createLinearGradient(54, 200, 54, 220);
 lingrad.addColorStop(0, '#00ABEB');
-lingrad.addColorStop(0.5, '#fff');
-lingrad.addColorStop(0.5, '#26C000');
 lingrad.addColorStop(1, '#fff');
+// lingrad.addColorStop(0.5, '#26C000');
+// lingrad.addColorStop(1, '#fff');
 ctx.fillStyle = lingrad;
-ctx.fillRect(80,90,130,130);
+ctx.fillRect(54,200,20,20);
+ctx.font = '12px 微软雅黑';
+ctx.fillStyle = '#333';
+ctx.fillText(address, 84, 212);
+
+// 创建小程序码区
+ctx.fillStyle = '#ffffff'; // 这里的样式对下一个fillstyle前的元素都有效
+ctx.fillRect(20, 360, 297, 200);
+
+// 小程序码
+let text1 = '长按小程序码';
+let text2 = '创建属于你的名片';
+let radgrad = ctx.createRadialGradient(105,450,16,110,460,60);
+radgrad.addColorStop(0, '#A7D30C');
+radgrad.addColorStop(0.9, '#019F62');
+radgrad.addColorStop(1, 'rgba(1,159,98,1)');
+ctx.fillStyle = radgrad;
+ctx.fillRect(30,380,150, 150);
+ctx.font = '12px 微软雅黑';
+ctx.fillStyle = '#333';
+ctx.fillText(text1, 180, 450);
+ctx.fillText(text2, 180, 468);
