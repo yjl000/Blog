@@ -8,7 +8,7 @@ canvas是html5的新标签，就是html上的画布。通过他，可以在上�
 
 最近在朋友圈，对，就是大部分是微商广告的那种朋友圈，看到很多广告的名片，是以图片的的形式存在的。原来还孤陋寡闻的以为是截屏的......。后面才知道是用canvas实现，用微信小程序的保存图片功能实现的，接下来，就以创建名片为demo，来使用基本的canvas。先上图看效果：
 
-![1569061436717](E:\bolg\Blog\进阶笔记\images\mingpian.png)
+![1569061436717](https://github.com/yjl000/Blog/blob/master/进阶笔记/images/mingpian.png)
 
 看起来有点丑，本来电话、地址、公司的icon都是图片的，但是为了更多的学习canvas，就用canvas创建的图形来代替的。
 
@@ -86,7 +86,7 @@ ctx.closePath();
 
 另外要注意的一个点就是moveTo()这个方法，看字面的意思我们就知道，是移动到某处的意思。如果不写着方法，那图形的连接处就会有痕迹。比如注释掉第一个moveTo()，效果是这样的：
 
-![1569229712383](E:\bolg\Blog\进阶笔记\images\1569229712383.png)
+![1569229712383](https://github.com/yjl000/Blog/blob/master/进阶笔记/images/1569229712383.png)
 
 
 

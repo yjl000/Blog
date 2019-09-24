@@ -34,6 +34,8 @@
 
 [浏览器事件循环VSNode循环](https://github.com/yjl000/Blog/blob/master/进阶笔记/浏览器事件循环VSNode事件循环.md)
 
+[canvas入门使用](https://github.com/yjl000/Blog/blob/master/进阶笔记/canvas入门使用.md)
+
 ### 常用小插件
 
 [countdown倒计时](https://github.com/yjl000/Blog/tree/master/components/countdown)
