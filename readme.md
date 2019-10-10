@@ -34,6 +34,8 @@
 
 [函数](https://github.com/yjl000/Blog/blob/master/js基础与进阶/基础/函数.md)
 
+[函数参数的传递方式](https://github.com/yjl000/Blog/blob/master/js基础与进阶/基础/函数参数都是按值传递的？！.md)
+
 ### 进阶笔记
 
 [浏览器事件循环VSNode循环](https://github.com/yjl000/Blog/blob/master/进阶笔记/浏览器事件循环VSNode事件循环.md)
