@@ -41,7 +41,7 @@ grid-template-rows: 50px 50px 50px;
 
 这些代码就生成了3X3的单元格，每个单元格宽高是50px,给每个单元格设置颜色，可以看到效果
 
-[1582702361043](https://github.com/yjl000/Blog/blob/master/css实践/Grid实践/image/1582702361043.png)
+![1582702361043](https://github.com/yjl000/Blog/blob/master/css实践/Grid实践/image/1582702361043.png)
 
 当然，如果是很多行，很多列，宽高也是一样的情况下，一个个写就很耗时，这是还有另外一种写法：
 
@@ -60,7 +60,7 @@ grid-template-columns: 50px 2fr 1fr;
 
 这种写法，表示第2列的宽度是第三列的2倍，如果容器的总宽度是200px，那第一列的单元格是50px，第二列的是100px，第三列的是50px,如图：
 
-[1582702934474](https://github.com/yjl000/Blog/blob/master/css%E5%AE%9E%E8%B7%B5/Grid%E5%AE%9E%E8%B7%B5/image/1582702934474.png)
+![1582702934474](https://github.com/yjl000/Blog/blob/master/css%E5%AE%9E%E8%B7%B5/Grid%E5%AE%9E%E8%B7%B5/image/1582702934474.png)
 
 除此之外，对，还有写法：
 
@@ -98,7 +98,7 @@ gap: 10px 10px; /*第一个是行间距， 第二个是列间距*/
 
 如图所示：
 
-[1582706679767](https://github.com/yjl000/Blog/blob/master/css实践/Grid实践/image/1582706679767.png)
+![1582706679767](https://github.com/yjl000/Blog/blob/master/css实践/Grid实践/image/1582706679767.png)
 
 ##### 3.设置单元格对应的区域
 
@@ -120,7 +120,7 @@ grid-template-areas: 'a b c'
 
 效果如下：
 
-[1582707303198](https://github.com/yjl000/Blog/blob/master/css实践/Grid实践/image/1582707303198.png)
+![1582707303198](https://github.com/yjl000/Blog/blob/master/css实践/Grid实践/image/1582707303198.png)
 
 项目1的单元格被放到了e区域。
 
@@ -180,7 +180,7 @@ align-content: end;
 
 效果如下：
 
-[1582709133035](https://github.com/yjl000/Blog/blob/master/css实践/Grid实践/image/1582709133035.png)
+![1582709133035](https://github.com/yjl000/Blog/blob/master/css实践/Grid实践/image/1582709133035.png)
 
 红色边框就是容器的区域。
 
@@ -205,7 +205,7 @@ align-content: end;
 
 正常的效果是这样的
 
-[1582702361043](https://github.com/yjl000/Blog/blob/master/css实践/Grid实践/image/1582702361043.png)
+![1582702361043](https://github.com/yjl000/Blog/blob/master/css实践/Grid实践/image/1582702361043.png)
 
 现在让项目1横竖跨度两个单元格，即占用四个单元格，代码如下：
 
@@ -219,11 +219,11 @@ grid-row-end: 3;
 
 效果如下：
 
-[1582710283522](https://github.com/yjl000/Blog/blob/master/css实践/Grid实践/image/1582710283522.png)
+![1582710283522](https://github.com/yjl000/Blog/blob/master/css实践/Grid实践/image/1582710283522.png)
 
 这里的开始和结束，都是根据网格线来判断的：
 
-[1582710404622](https://github.com/yjl000/Blog/blob/master/css实践/Grid实践/image/1582710404622.png)
+![1582710404622](https://github.com/yjl000/Blog/blob/master/css实践/Grid实践/image/1582710404622.png)
 
 还有简化的写法：
 
