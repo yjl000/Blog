@@ -42,6 +42,8 @@
 
 [canvas入门使用](https://github.com/yjl000/Blog/blob/master/进阶笔记/canvas入门使用.md)
 
+[Grid的使用](https://github.com/yjl000/Blog/blob/master/css实践/Grid实践/Grid的简单介绍以及制作简历实践使用.md)
+
 ### 常用小插件
 
 [countdown倒计时](https://github.com/yjl000/Blog/tree/master/components/countdown)
