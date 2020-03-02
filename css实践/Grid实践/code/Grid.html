@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    span{
+      font-size: 20px;
+    }
+    #container { /* 容器属性 */
+      display: grid;
+      width: 400px;
+      height: 400px;
+      border: 1px solid red;
+      /* 常规写法，3行3列，宽度都是50px */
+      /* grid-template-columns: 50px 50px 50px;
+      grid-template-rows: 50px 50px 50px; */
+      
+      /* 使用repeat重复函数 ，表示行列重复3次，每次宽度占比33.33%*/
+      /* width: 200px;
+      height: 200px;
+      grid-template-columns: repeat(3, 33.33%);
+      grid-template-rows: repeat(3, 33.33%); */
+
+      /* fr关键字，表示3列，第一列50px 第二列是第三列的2倍（100和50） */
+      /* grid-template-columns: 50px 2fr 1fr; */
+
+      /* minmax(min, max) 长度范围 */
+      /* grid-template-columns: 1fr 1fr minmax(20px, 1fr); */
+
+      /* auto关键字 由浏览器自己决定长度 (可用于固定某一列，剩下的自适应)*/
+      /* grid-template-columns: 100px auto 50px; */
+
+      /* 定义网格线的名字 */
+      grid-template-columns: [c1] 50px [c2] 50px [c3] 50px;
+      grid-template-rows: [r1] 50px [r2] 50px [r3] 50px;
+
+
+      /* 
+        row-gap 设置行间距
+        column-gap 设置列间距
+        gap: row cloumn 行间距 列间距
+       */
+       /* column-gap: 20px;
+       row-gap: 20px; */
+       gap: 10px 10px;
+
+
+       /* grid-template-areas 指定对应的区域*/
+       grid-template-areas: 'a b c'
+                            'd e f'
+                            'g h i';
+
+      /* grid-auto-flow: row 容器中子元素的排列顺序，默认按行排列, column 按列排序*/
+      /* grid-auto-flow: column dense; */
+
+
+      /* 设置单元格内容的位置 start | end | center | stretch
+      justify-items 水平位置
+      align-items 垂直位置
+      place-items <align-items> <justify-items> 上面两个属性的合并简写
+       */
+       /* justify-items: start;
+       align-items: start; */
+
+
+       /* 整个内容区域在容器里的位置 start | end | center | stretch | 
+       space-around(项目与项目间隔相等，与容器边框的间隔是与项目间隔的一半) | 
+       space-between (项目与项目间隔相等，与容器边框的间隔没有间隔)| 
+       space-evenly(项目与项目间隔相等，与容器边框的间隔是与项目相等)
+       
+       
+       justify-content 水平位置
+       align-content 垂直位置
+       place-content <align-content> <justify-content>
+        */
+        justify-content: center;
+        align-content: end;
+
+
+        /* grid-auto-colums、grid-auto-rows 用来设置超出指定的行和列（指定3X3,但是有两个单元格在第四行，第五行，浏览器自动生成多余的行列）的单元格的宽高 */
+    }
+
+    /* 项目属性 */
+    /* 
+      grid-column-start  左边框所在的垂直网格线
+      grid-colum-end  右边框所在的垂直网格线
+      grid-row-start 上边框所在的垂直网格线
+      grid-row-end   下边框所在的垂直网格线
+     */
+     /* 
+     grid-column = {grid-column-start, grid-column-end}
+     grid-row = {grid-row-start, grid-row-end}
+      */
+
+    /* grid-area 指定项目放在哪个区域（区域由容器指定） */
+
+    /* 
+    justify-self
+    align-self
+    place-self
+    和容器的justify-item、align-items一致，只不过作用于单个项目
+    */
+
+    
+    .item {
+      font-size: 2em;
+      text-align: center;
+      border: 1px solid #e5e4e9;
+    }
+
+    .item-1 {
+      background-color: #ef342a;
+      /* 1号项目的左边框是第二根垂直网格线，右边框是第4跟网格线 */
+      /* grid-column-start: 2;
+      grid-column-end: 4; */
+      grid-column: 2 / 4;
+
+      /* 可以使用span表示跨越多少个网格 */
+      /* grid-column-start: span 3; */
+
+      grid-area: e;
+    }
+
+    .item-2 {
+      background-color: #f68f26;
+    }
+
+    .item-3 {
+      background-color: #4ba946;
+    }
+
+    .item-4 {
+      background-color: #0376c2;
+    }
+
+    .item-5 {
+      background-color: #c077af;
+    }
+
+    .item-6 {
+      background-color: #f8d29d;
+    }
+
+    .item-7 {
+      background-color: #b5a87f;
+    }
+
+    .item-8 {
+      background-color: #d0e4a9;
+    }
+
+    .item-9 {
+      background-color: #4dc7ec;
+    }
+
+  </style>
+</head>
+<body>
+  <span>foo</span>
+  <div id="container">
+    <div class="item item-1">1</div>
+    <div class="item item-2">2</div>
+    <div class="item item-3">3</div>
+    <div class="item item-4">4</div>
+    <div class="item item-5">5</div>
+    <div class="item item-6">6</div>
+    <div class="item item-7">7</div>
+    <div class="item item-8">8</div>
+    <div class="item item-9">9</div>
+  </div>
+  <span>bar</span>
+</body>
+</html>
