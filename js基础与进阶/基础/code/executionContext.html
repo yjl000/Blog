@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+</html>
+<script>
+  // changeColor作用域可以访问全局作用域color
+  var color = 'blue';
+  function changeColor () {
+    if (color === 'blue') {
+      color = 'red';
+    } else {
+      color = 'green';
+    }
+  }
+
+  changeColor();
+  // alert('Color is now ' + color); // red
+
+  function changeNum () {
+    var num = 1;
+    function outNum () {
+      var result = 0;
+      if (num === 1) {
+        result = 1;
+      } else {
+        result = -1;
+      }
+      return result;
+    }
+    num = outNum();
+    console.log(num);
+  }
+
+  changeNum();
+
+
+
+  function buildUrl () {
+    var qs = "?debug=true";
+    with (location) {
+      var url = href + qs
+    }
+    return url
+  }
+  console.log(url);
+  // console.log(buildUrl())
+</script>

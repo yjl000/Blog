@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>链表学习</title>
+</head>
+<body>
+  
+</body>
+</html>
+<script>
+  function List () {
+    // 链表节点
+    let Node = function (element) {
+      this.element = element;
+      this.next = null;
+    }
+
+    // 初始头节点为null
+    let head = null;
+
+    // 链表长度
+    let length = 0;
+
+    // 链表操作
+
+    // 获取链表
+    this.getList = function () {return head};
+    // 搜索节点
+    this.search = function (element) {
+      let p = head;
+      if (!p) {
+        return false;
+      }
+      while (p) {
+        if (p.element === element) {
+          return true;
+        }
+        p = p.next;
+      }
+      return false;
+    };
+    // 往最后添加节点
+    this.append = function (element) {
+      let node = new Node(element),
+      p = head;
+      if (!head) {
+        head = node;
+      } else {
+        while (p.next) {
+          p = p.next;
+        }
+        p.next = node;
+      }
+      length += 1;
+    };
+    // 在链表任意位置添加节点
+    this.insert = function (position, element) {};
+    // 删除节点
+    this.remove = function (element) {};
+    // 是否是空链表
+    this.isEmpty = function () {};
+
+    this.size = function () {
+      return length;
+    }
+
+  }
+
+  let list = new List();
+  for (let i = 0; i < 5; i++) {
+    list.append(i);
+  }
+  console.log(list.size())
+
+  console.log(list.search(4)); // true
+  console.log(list.search(11)); // false
+</script>
