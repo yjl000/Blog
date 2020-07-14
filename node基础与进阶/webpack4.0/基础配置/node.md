@@ -20,3 +20,8 @@
   }
 
 12.安装babel，将es6转为es5
+
+13.引入第三方库：
+  （1）expose-loader暴露全局变量
+  （2）webpack.providePlugin 给每个模块引入变量
+  （3）cdn引入

@@ -3,7 +3,8 @@ let path = require('path');
 let HtmlWebpackPlugin = require('html-webpack-plugin');
 const TerserJSPlugin = require('terser-webpack-plugin')
 let MiniCssExtractPlugin = require('mini-css-extract-plugin');
-let  OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin')
+let  OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
+let webpack = require('webpack');
 module.exports = {
   devServer: { // 开发服务器的配置
     port: 3000,
@@ -34,6 +35,9 @@ module.exports = {
     }),
     new MiniCssExtractPlugin({
       filename: 'main.css'
+    }),
+    new webpack.ProvidePlugin({ // 在每个模块中注入$
+      $: 'jquery',
     })
   ],
   module: { // 模块
@@ -48,6 +52,13 @@ module.exports = {
       //   },
        
       // },
+      {
+        // test: require.resolve('jquery'),
+        // loader: 'expose-loader',
+        // options: { // 必须是options对象
+        //   exposes: ['$', 'jQuery']
+        // }
+      },
       {
         test: /\.js$/, // normal
         use: {
