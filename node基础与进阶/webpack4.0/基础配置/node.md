@@ -25,3 +25,9 @@
   （1）expose-loader暴露全局变量
   （2）webpack.providePlugin 给每个模块引入变量
   （3）cdn引入
+14.webpack打包图片：
+  （1）在js中创建图片来引入
+  （2）在css中引入background('url')
+  （3）img标签引入
+  （4）安装图片loader——file-loader、 html的loader——html-withimg-loader,配置完成打包
+  （5）将file-loader替换为url-loader

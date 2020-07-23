@@ -11,25 +11,30 @@ module.exports = {
     progress: true,
     contentBase: './dist'
   },
+  // optimization: { // 优化项
+  //   minimizer: [
+  //     new TerserJSPlugin({}),
+  //     new OptimizeCssAssetsWebpackPlugin({})
+  //   ]
+  // },
   mode: 'development',//'development', // 默认两种模式 production， development
   entry: './src/index.js', // 入口
   output: {
     filename: 'bundle.js', // 打包后的文件名(每次生成有8位哈希值的js文件)
     path: path.resolve(__dirname, 'dist'), // 路径必须是绝对路径
-    // publicPath: 'http://localhost:3000'
   },
   plugins: [ // 数组，放着所有的webpack插件
     new HtmlWebpackPlugin({
       template: './src/index.html',
       filename: 'index.html',
       minify: { // 最小化
-        // removeAttrributeQuotes: false, // 去掉引号
-        // collapseWhitespace: false, // 变成单行（去掉空格）
+        // removeAttrributeQuotes: true, // 去掉引号
+        // collapseWhitespace: true, // 变成单行（去掉空格）
       },
       hash: false, // 添加哈希值
     }),
     new MiniCssExtractPlugin({
-      filename: 'css/main.css'
+      filename: 'main.css'
     }),
     new webpack.ProvidePlugin({ // 在每个模块中注入$
       $: 'jquery',
@@ -37,38 +42,22 @@ module.exports = {
   ],
   module: { // 模块
     rules: [
-      {
-        test: /\.html$/,
-        use: [
-          {
-            loader: 'html-withimg-loader'
-          }
-        ]
-      },
       // {
-      //   test: /\.(png|jpe?g|gif)$/i,
-      //   use: [
-      //     {
-      //       loader: 'file-loader',
-      //       options: {
-      //         esModule: false,
-      //       }
+      //   test: /\.js$/,
+      //   use: {
+      //     loadre: 'eslint-loader',
+      //     options: {
+      //       enforce: 'pre' // pre post
       //     }
-      //   ]
+      //   },
+       
       // },
       {
-        test: /\.(png|jpe?g|gif)$/i,
-        use: [
-          { // 设置限制，当图片小于多少k时，转为base64，否则按file-loader生成
-            loader: 'url-loader',
-            options: {
-              limit: 1,
-              esModule: false,
-              outputPath: '/img/',
-              publicPath: 'http://localhost:3000'
-            }
-          }
-        ]
+        // test: require.resolve('jquery'),
+        // loader: 'expose-loader',
+        // options: { // 必须是options对象
+        //   exposes: ['$', 'jQuery']
+        // }
       },
       {
         test: /\.js$/, // normal
