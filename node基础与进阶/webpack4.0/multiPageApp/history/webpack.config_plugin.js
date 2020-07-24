@@ -11,26 +11,6 @@ module.exports = {
   entry: {
     home: './src/index.js'
   },
-  devServer: {
-    // 1.代理服务器
-    // proxy: {
-    //   // '/api': 'http://localhost:3000', // 配置代理
-    //   '/api': {
-    //     target: 'http://localhost:3000',
-    //     pathRewrite: {'api': ''}
-    //   }
-    // }
-
-    // 2.前端mock数据
-    // before(app) { // webpack提供的钩子方法
-    //   app.get('/user', (req, res) => {
-    //     res.json({name: 'kenyangbefore'})
-    //   })
-    // }
-
-    // 3 有服务端，不用代理，在服务端中启用webpack, 端口用服务器端口 在server.js启动webpack
-
-  },
   output: {
     // [name]:home,other
     filename: '[name].js',
@@ -55,6 +35,11 @@ module.exports = {
       filename: 'index.html',
     }),
     new CleanWebpackPlugin(),
+    new CopyWebpackPlugin({
+      patterns: [
+        {from: 'doc', to: './'}
+      ]
+    }),
     new webpack.BannerPlugin('make 2020 by ken')
   ]
 }
