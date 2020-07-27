@@ -11,15 +11,6 @@ module.exports = {
   entry: {
     home: './src/index.js'
   },
-  resolve: { // 解析第三方包 common
-    modules: [path.resolve('node_modules')],
-    // alias: { // 别名
-    //   bootstrap: 'bootstrap/dist/css/bootstrap.css'
-    // },
-    // mainFields: ['style', 'main'], // 主入口
-    // mainFile: [], // 入口文件的名字
-    extensions: ['.js', '.css', '.json', '.vue'] // 自动添加的后缀名, 从前往后寻找
-  },
   devServer: {
     // 1.代理服务器
     // proxy: {
@@ -47,10 +38,6 @@ module.exports = {
   },
   module: {
     rules: [
-      {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader']
-      },
       {
         test: /\.js$/,
         use: {

@@ -1,3 +1,6 @@
+// import 'bootstrap';
+import './style';
+// import 'bootstrap/dist/css/bootstrap.css';
 let xhr = new XMLHttpRequest();
 // 跨域，配置代理http-proxy
 xhr.open('GET', '/user', true);
