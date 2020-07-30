@@ -1,3 +1,4 @@
+exports["ab"] =
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -81,53 +82,19 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/index.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/test.js");
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./node_modules/react-dom/index.js":
-/*!*********************************************************************************!*\
-  !*** delegated ./node_modules/react-dom/index.js from dll-reference _dll_react ***!
-  \*********************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("module.exports = (__webpack_require__(/*! dll-reference _dll_react */ \"dll-reference _dll_react\"))(\"./node_modules/react-dom/index.js\");\n\n//# sourceURL=webpack:///delegated_./node_modules/react-dom/index.js_from_dll-reference__dll_react?");
-
-/***/ }),
-
-/***/ "./node_modules/react/index.js":
-/*!*****************************************************************************!*\
-  !*** delegated ./node_modules/react/index.js from dll-reference _dll_react ***!
-  \*****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("module.exports = (__webpack_require__(/*! dll-reference _dll_react */ \"dll-reference _dll_react\"))(\"./node_modules/react/index.js\");\n\n//# sourceURL=webpack:///delegated_./node_modules/react/index.js_from_dll-reference__dll_react?");
-
-/***/ }),
-
-/***/ "./src/index.js":
-/*!**********************!*\
-  !*** ./src/index.js ***!
-  \**********************/
-/*! no exports provided */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\n/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);\n// import jquery from 'jquery';\n// import moment from 'moment';\n// // 设置语言\n// import 'moment/locale/zh-cn'; // 手动引入部分语言包\n// moment.locale('zh-cn');\n// let r = moment().endOf('day').fromNow();\n// console.log(r);\n\n\nObject(react_dom__WEBPACK_IMPORTED_MODULE_1__[\"render\"])( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"h1\", null, \"jsx\"), window.root);\n\n//# sourceURL=webpack:///./src/index.js?");
-
-/***/ }),
-
-/***/ "dll-reference _dll_react":
-/*!*****************************!*\
-  !*** external "_dll_react" ***!
-  \*****************************/
+/***/ "./src/test.js":
+/*!*********************!*\
+  !*** ./src/test.js ***!
+  \*********************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("module.exports = _dll_react;\n\n//# sourceURL=webpack:///external_%22_dll_react%22?");
+eval("module.exports = 'kenyang';\n\n//# sourceURL=webpack://ab/./src/test.js?");
 
 /***/ })
 
