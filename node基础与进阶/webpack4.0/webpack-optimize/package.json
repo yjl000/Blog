@@ -23,6 +23,7 @@
     "webpack-cli": "^3.3.12"
   },
   "dependencies": {
+    "happypack": "^5.0.1",
     "jquery": "^3.5.1",
     "moment": "^2.27.0",
     "react": "^16.13.1",

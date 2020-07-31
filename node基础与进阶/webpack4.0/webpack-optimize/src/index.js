@@ -1,13 +1,6 @@
-// import jquery from 'jquery';
-// import moment from 'moment';
+import calc from './test';
+// 1、import 在生产环境下会自动去除掉没用的代码
+// tree-shaking（摇晃树） 把没用到的代码 自动删除掉
 
-// // 设置语言
-// import 'moment/locale/zh-cn'; // 手动引入部分语言包
-// moment.locale('zh-cn');
-// let r = moment().endOf('day').fromNow();
-// console.log(r);
-
-import React from 'react';
-import { render } from 'react-dom';
-
-render(<h1>jsx</h1>, window.root)
+// 2、scope hosting 作用域提升， 在webpack中自动省略一些可以简化的代码
+console.log(calc.sum(1, 2))
