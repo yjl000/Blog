@@ -3,12 +3,30 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 
 module.exports = {
+  optimization: {
+    splitChunks: { // 分割代码块
+      cacheGroups: { // 缓存组
+        common: { // 公共的模块
+          chunks: 'initial',
+          minSize: 0,
+          minChunks: 2
+        },
+        verndor: {
+          priority: 1,
+          test: /node_modules/,
+          chunks: 'initial',
+          minSize: 0,
+          minChunks: 2
+        }
+      }
+    }
+  },
   mode: 'production',
   entry: {
-    index: './src/index.js'
+    index: './src/index.js',
+    other: './src/other.js'
   },
   devServer: {
-    hot: true,
     port: 3000,
     open: true,
     contentBase: './dist'
@@ -41,8 +59,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './public/index.html'
     }),
-    new webpack.NamedModulesPlugin(), // 打印更新的模块路径
-    new webpack.HotModuleReplacementPlugin() // 热更新插件
     // new webpack.DllReferencePlugin({
     //   manifest: path.resolve(__dirname, 'dist', 'manifest.json')
     // })
