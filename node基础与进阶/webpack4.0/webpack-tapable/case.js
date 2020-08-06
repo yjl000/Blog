@@ -1,31 +1,40 @@
-class SyncLoopHook { // 钩子是保险同步的（是否需要往下执行）
+class ASyncParralleHook { // 钩子是保险同步的（是否需要往下执行）
   constructor(args) { // args => ['name']
     this.tasks = [];
   }
-  tap(name, task) {
+  tapPromise(name, task) {
     this.tasks.push(task)
   }
-  call(...args) {
-    this.tasks.forEach(task => {
-      let ret;
-      do {
-        ret = task(...args);
-      } while (ret != undefined);
-    })
+  promise(...args) {
+    let tasks = this.tasks.map(task => task(...args));
+    return Promise.all(tasks);
   }
 }
 
-let hook = new SyncLoopHook(['name']);
+let hook = new ASyncParralleHook(['name']);
 let total = 0;
-hook.tap('react', function (name) {
-  console.log('react', name);
-  return ++total == 3 ? undefined : '继续学'
+hook.tapPromise('react', function (name) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log('react', name);
+      resolve()
+    }, 1000)
+  })
+ 
+  
 });
-hook.tap('node', function (name) {
-  console.log('node', name);
+hook.tapPromise('node', function (name) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log('node', name);
+      resolve()
+    }, 1000)
+  })
 });
-hook.tap('webpack', function (name) {
-  console.log('webpack', name);
+
+
+hook.promise('kenyang').then(function () {
+  console.log('end')
 })
 
-hook.call('kenyang')
+// AsyncParralleBailHook() 带保险的异步并发钩子

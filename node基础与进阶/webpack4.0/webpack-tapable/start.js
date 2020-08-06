@@ -1,23 +1,40 @@
-let {SyncLoopHook} = require('tapable');
-// 同步遇到某个不返回undefined的，监听函数会多次执行
+let {AsyncParallelHook} = require('tapable');
+// 异步的钩子（串行） 并行 需要等待所有并发的异步事件执行后在执行回调方法
+// 同时发送多个请求
+// 注册方法分为tap注册 tapAsync注册
+// tapable库有三种注册方法 tap同步注册 tapAsync(cb) tapPromise(注册是promise)
+// call call callAsync
 class Lesson {
   constructor() {
     this.index = 0;
     this.hooks = {
-      arch: new SyncLoopHook(['name']),
+      arch: new AsyncParallelHook(['name']),
     }
   }
   tap () { // 注册监听函数
-    this.hooks.arch.tap('node', (name) => {
-      console.log('node', name);
-      return ++this.index === 3 ? undefined: '继续学'
+    this.hooks.arch.tapPromise('node', (name) => {
+      return  new Promise((resolve, reject) => {
+        setTimeout(() => {
+          console.log('node', name);
+          resolve();
+        }, 1000)
+      })
+      
     });
-    this.hooks.arch.tap('react', (data) => {
-      console.log('react', data)
+    this.hooks.arch.tapPromise('react', (name) => {
+      return  new Promise((resolve, reject) => {
+        setTimeout(() => {
+          console.log('react', name);
+          resolve();
+        }, 1000)
+      })
+      
     })
   }
   start() {
-    this.hooks.arch.call('kenyang')
+    this.hooks.arch.promise('kenyang').then(() => {
+      console.log('end')
+    })
   }
 }
 
