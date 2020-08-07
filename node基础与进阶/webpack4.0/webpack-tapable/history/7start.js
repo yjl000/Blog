@@ -12,27 +12,27 @@ class Lesson {
     }
   }
   tap () { // 注册监听函数
-    this.hooks.arch.tapPromise('node', (name) => {
+    this.hooks.arch.tapAsync('node', (name, cb) => {
       return  new Promise((resolve, reject) => {
         setTimeout(() => {
           console.log('node', name);
-          resolve();
+          cb();
         }, 1000)
       })
       
     });
-    this.hooks.arch.tapPromise('react', (name) => {
+    this.hooks.arch.tapAsync('react', (name, cb) => {
       return  new Promise((resolve, reject) => {
         setTimeout(() => {
           console.log('react', name);
-          resolve();
+          cb();
         }, 1000)
       })
       
     })
   }
   start() {
-    this.hooks.arch.promise('kenyang').then(() => {
+    this.hooks.arch.callAsync('kenyang', () => {
       console.log('end')
     })
   }

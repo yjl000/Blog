@@ -1,20 +1,17 @@
-class ASyncSeriesHook {
-  constructor(args) {
+class ASyncParralleHook { // 钩子是保险同步的（是否需要往下执行）
+  constructor(args) { // args => ['name']
     this.tasks = [];
   }
   tapPromise(name, task) {
     this.tasks.push(task)
   }
-  promise(...args) { // reduct源码
-    let [first, ...other] = this.tasks;
-    return other.reduce((p, n) => {
-      return p.then(() => n(...args))
-    }, first(...args));
-
+  promise(...args) {
+    let tasks = this.tasks.map(task => task(...args));
+    return Promise.all(tasks);
   }
 }
 
-let hook = new ASyncSeriesHook(['name']);
+let hook = new ASyncParralleHook(['name']);
 let total = 0;
 hook.tapPromise('react', function (name) {
   return new Promise((resolve, reject) => {
@@ -23,7 +20,6 @@ hook.tapPromise('react', function (name) {
       resolve()
     }, 1000)
   })
-  
  
   
 });
