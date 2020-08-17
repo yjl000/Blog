@@ -1,43 +1,49 @@
-class ASyncSeriesHook {
+class AsyncSeriesWaterfallHook {
   constructor(args) {
     this.tasks = [];
   }
-  tapPromise(name, task) {
+  tapAsync(name, task) {
     this.tasks.push(task)
   }
-  promise(...args) { // reduct源码
-    let [first, ...other] = this.tasks;
-    return other.reduce((p, n) => {
-      return p.then(() => n(...args))
-    }, first(...args));
+  callAsync(...args) { // reduct源码
+    let index = 0;
+    let finalCallback = args.pop();
+    let next = (err, data) => {
+      let task = this.tasks[index];
+      if (!task) return finalCallback();
+      if (index === 0) { // 执行的是第一个
+        task(...args, next);
+      } else {
+        if (err !== null) {
+          return finalCallback();
+        }
+        task(data, next);
+      }
+      index++;
+    }
 
+    next();
   }
 }
 
-let hook = new ASyncSeriesHook(['name']);
+let hook = new AsyncSeriesWaterfallHook(['name']);
 let total = 0;
-hook.tapPromise('react', function (name) {
-  return new Promise((resolve, reject) => {
+hook.tapAsync('react', function (name, cb) {
     setTimeout(() => {
       console.log('react', name);
-      resolve()
+      cb('error', 'result')
     }, 1000)
-  })
-  
- 
   
 });
-hook.tapPromise('node', function (name) {
-  return new Promise((resolve, reject) => {
+hook.tapAsync('node', function (data, cb) {
     setTimeout(() => {
-      console.log('node', name);
-      resolve()
+      console.log('node', data);
+      cb()
     }, 1000)
-  })
 });
 
 
-hook.promise('kenyang').then(function () {
+hook.callAsync('kenyang', function () {
   console.log('end')
 })
 
