@@ -1,0 +1,14 @@
+{
+  "name": "ken-pack",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "kenyang",
+  "license": "ISC",
+  "bin": {
+    "ken-pack": "./bin/ken-pack.js"
+  }
+}
