@@ -1,6 +1,6 @@
 # Dependency directories
 node基础与进阶/webpack4.0/基础配置/node_modules/*
-
+/vue/vue-dev/*
 .project
 origin/node_modules/*
 src/application/logs/*
