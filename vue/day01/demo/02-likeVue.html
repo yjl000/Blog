@@ -13,9 +13,52 @@
 </body>
 </html>
 <script>
+
+  let rkouhao = /\{\{(.+?)\}\}/g
   // 步骤拆解
   // 1.拿到模板
   // 2.拿到数据 （data）
-  // 3.将数据与模板结合，得到的是html元素（dom元素）
+  // 3.将数据与模板结合，得到的是html元素（dom元素） 一般使用递归
   // 4.放到页面中
+
+  // 1
+  let temNode = document.querySelector('#root');
+
+  // 2 
+  let data = {
+    name: '一个新name',
+    message: '一个消息'
+  }
+
+  // 3
+  // 在真正的Vue源码中是DOM -> 字符串模板 -> Vnode -> 真正的dom
+  function compiler(template, data) {
+    let childNodes = template.childNodes;
+    for (let i = 0; i < childNodes.length; i++) {
+      let type = childNodes[i].nodeType; // 1元素 3 文本节点
+      if (type === 3) {
+        let txt = childNodes[i].nodeValue;
+        // 替换花括号的内容
+        txt = txt.replace(rkouhao, function (_, g) { // replace使用正则匹配一次，函数就会被调用一次
+        // 函数的第0个参数，表示匹配到的内容
+        // 函数的第n个参数，表示正则中的第n组
+        let key = g.trim() // 写在花括号里面的东西
+        let value = data[key]
+        return value
+          
+        })
+
+        childNodes[i].nodeValue = txt
+      } else if (type === 1) {
+        compiler(childNodes[i], data)
+      }
+    }
+  }
+  let generateNode = temNode.cloneNode(true)
+  console.log(temNode)
+  compiler(generateNode, data)
+  console.log(generateNode)
+
+  // 4
+  root.parentNode.replaceChild( generateNode, root )
 </script>

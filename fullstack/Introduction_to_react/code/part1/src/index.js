@@ -1,64 +1,22 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-const Header = (props) => {
-  console.log(props)
-  return (
-  <h1>{props.course.name}</h1>
-  )
-}
+const Display = ({counter}) => <div>{counter}</div>
 
-const Part = (props) => {
-  return (
-    <p>{props.part} {props.exercises}</p>
-  )
-  
-}
-
-const Content = (props) => {
-  console.log(props)
-  return (
-    <div>
-      <Part part={props.course.parts[0].name} exercises={props.course.parts[0].exercises} />
-      <Part part={props.course.parts[1].name} exercises={props.course.parts[1].exercises} />
-      <Part part={props.course.parts[2].name} exercises={props.course.parts[2].exercises} />
-    </div>
-    
-  )
-}
-
-const Total = (props) => {
-  return (
-    <p>Number of exercises {props.course.parts[0].exercises + props.course.parts[1].exercises + props.course.parts[2].exercises}</p>
-  )
-}
+const Button = ({handleClick, text}) => <button onClick={handleClick}>{text}</button>
 
 const App = () => {
-  const course = {
-    name: 'Half Stack application development',
-    parts: [
-      {
-        name: 'Fundamentals of React',
-        exercises: 10
-      },
-      {
-        name: 'Using props to pass data',
-        exercises: 7
-      },
-      { 
-        name: 'State of a component',
-        exercises: 14
-      }
-    ]
-  };
-  
-  
+  const [counter, setCounter] = useState(0)
+  const increaseByOne = () => setCounter(counter + 1)
+  const decreaseByOne = () => setCounter(counter - 1)
+  const setTozero = () => setCounter(0)
   return (
     <div>
-      <Header course={course} />
-      <Content course={course} />
-      <Total course={course} />
+      <Display counter={counter}></Display>
+      <Button handleClick={increaseByOne} text='plus'/>
+      <Button handleClick={setTozero} text='zero'/>
+      <Button handleClick={decreaseByOne} text='minus'/>
     </div>
   )
 }

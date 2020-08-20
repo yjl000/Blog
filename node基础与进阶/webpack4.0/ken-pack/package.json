@@ -10,5 +10,12 @@
   "license": "ISC",
   "bin": {
     "ken-pack": "./bin/ken-pack.js"
+  },
+  "dependencies": {
+    "@babel/generator": "^7.11.0",
+    "@babel/traverse": "^7.11.0",
+    "@babel/types": "^7.11.0",
+    "babylon": "^6.18.0",
+    "ejs": "^3.1.5"
   }
 }
