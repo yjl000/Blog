@@ -1,0 +1,53 @@
+.content {
+    display: flex;
+    margin-top: 10.8rem;
+}
+.sidebar-wrap {
+    width: 25.8rem;
+    /* background-color: #e6e6e6; */
+}
+.content-detail {
+    margin: 11.6rem auto 0;
+    flex: 1;
+    
+}
+/* .moveRight {
+    width: 80%;
+} */
+.condition {
+    padding-bottom: 6.9rem;
+    margin: 0 auto;
+    width: 80%;
+    padding-left: 2rem;
+}
+.fqa-wrap {
+    margin-bottom: 1.8rem;
+    display: flex;
+    height: 12.4rem;
+}
+.fqa-text {
+    width: 100%;
+    background-color: #f2f2f2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.fqa-text span {
+    font-family: MdFont;
+	font-size: 2.1rem;
+    color: #1a1a1a;
+}
+
+.condition-content {
+    padding: 3rem 7.8rem 3.8rem 7.5rem;
+    margin: 0 auto;
+    font-family: Roman;
+	font-size: 1.3rem;
+	color: #000;
+}
+.condition .img {
+    height: 64.3rem;
+    width: 100%;
+    background: url(../img/three.gif);
+    background-size: 100% 100%;
+}

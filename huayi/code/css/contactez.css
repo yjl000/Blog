@@ -1,0 +1,121 @@
+.content {
+    display: flex;
+    margin-top: 10.8rem;
+}
+.sidebar-wrap {
+    width: 25.8rem;
+    background-color: #e6e6e6;
+}
+.content-detail {
+    margin: 11.6rem auto 0;
+    flex: 1;
+    
+}
+/* .moveRight {
+    width: 80%;
+} */
+.condition {
+    padding-bottom: 6.9rem;
+    margin: 0 auto;
+    width: 80%;
+    padding-left: 2rem;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.condition-wrap {
+    margin-bottom: 4rem;
+    padding-top: 4rem;
+    box-shadow: darkgrey 0px 0px 30px 5px;
+}
+.address {
+    margin-left: 4.9rem;
+}
+.address-desc {
+    font-family: MdFont;
+	font-size: 1.4rem;
+	color: #222222;
+}
+.address-detail {
+    margin-left: 4rem;
+}
+.contactez-desc {
+    font-family: MdFont;
+	font-size: 2rem;
+    color: #231815;
+    text-align: center;
+}
+.condition h2{
+    height: 6.1rem;
+    line-height: 6.1rem;
+	font-family: MdFont;
+	font-size: 4rem;
+	color: #222222;
+    text-align: center;
+}
+
+.condition-content {
+    border-bottom-left-radius: 1.6rem;
+    border-bottom-right-radius: 1.6rem;
+    padding: 0rem 3rem 3.8rem 3rem;
+    background-color: #fff;
+    margin: 0 auto;
+    font-family: Roman;
+	font-size: 1.2rem;
+    color: #000;
+    text-align: center;
+}
+
+.email-wrap {
+    display: flex;
+    justify-content: center;
+}
+.email-wrap p {
+    margin-right: 1rem;
+}
+.email-wrap p span{
+    display: inline-block;
+    width: 10.4rem;
+    height: 4.1rem;
+    text-align: left;
+    text-indent: 1.8rem;
+    line-height: 4.1rem;
+    background-color: #797777;
+    font-family: Roman;
+	font-size: 1.2rem;
+    color: #ffffff;
+    border-radius: 0.8rem;
+}
+.email-wrap p input {
+    width: 12rem;
+    height: 2.8rem;
+    border: none;
+    border: 2px solid #999;
+}
+.message p{
+    display: flex;
+    align-items: flex-start;
+}
+
+.message p span {
+    margin-right: 0.5rem;
+}
+.message p textarea {
+    width: 37rem;
+    border: none;
+    border: 2px solid #999;
+}
+.envoyer {
+    margin-top: 2rem;
+    display: inline-block;
+    text-decoration: none;
+    font-family: MdFont;
+	font-size: 1.7rem;
+    color: #ffffff;
+    width: 14.1rem;
+    height: 4.1rem;
+    line-height: 4.1rem;
+    background-color: #2b6590;
+    border-radius: 4.1rem;
+}

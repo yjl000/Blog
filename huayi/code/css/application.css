@@ -1,0 +1,41 @@
+.content {
+    display: flex;
+    margin-top: 10.8rem;
+}
+.sidebar-wrap {
+    width: 25.8rem;
+    background-color: #e6e6e6;
+}
+.content-detail {
+    margin: 11.6rem auto 0;
+    flex: 1;
+    
+}
+/* .moveRight {
+    width: 80%;
+} */
+.condition {
+    padding-bottom: 6.9rem;
+    margin: 0 auto;
+    width: 80%;
+    padding-left: 2rem;
+}
+
+.condition h2{
+    margin-bottom: 2rem;
+    height: 6.1rem;
+    line-height: 6.1rem;
+	font-family: MdFont;
+	font-size: 2.4rem;
+    color: #000000;
+    text-align: center;
+}
+
+.condition-content {
+    padding: 5.1rem 1.5rem 5.1rem 3rem;
+    background-color: #f2f2f2;
+    margin: 0 auto;
+    font-family: Roman;
+	font-size: 1.2rem;
+	color: #000;
+}

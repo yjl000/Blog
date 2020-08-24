@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=1202"> -->
+    <!-- <meta http-equiv="imagetoolbar" content="false" name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <title>HUIYI</title>
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/contactez.css">
+    <script src="../lib/vue.min.js"></script>
+    <script src="../js/header.js"></script>
+    <script src="../js/sidebar.js"></script>
+    <script src="../js/footer.js"></script>
+</head>
+
+<body οncοntextmenu="return false">
+    <div id="vue_app">
+        <!--自定义的组件使用-->
+        <common-head @switch="handleMenu"></common-head>
+        <!--页面自有内容-->
+        <div class="content">
+            <div class="sidebar-wrap" v-if="isOpen">
+                <common-sidebar :index="9"></common-sidebar>
+            </div>
+            <div :class="['content-detail', isOpen ? 'moveRight' : '']">
+                <div class="condition">
+                    <div class="condition-wrap">
+                        <h2>Contactez-nous</h2>
+                        <p class="contactez-desc">Renseignez les champs suivants et vous serez <br />
+                            recontacté (e) par notre équipe commerciale dans les 48h .</p>
+                        <div class="condition-content">
+                            <div class="email-wrap nom">
+                                <p>
+                                    <span>Nom</span>
+                                    <input v-model="form.nom" type="text">
+                                </p>
+                                <p>
+                                    <span>Prénom</span>
+                                    <input v-model="form.prenom" type="text">
+                                </p>
+                            </div>
+                            <div class="email-wrap email">
+                                <p>
+                                    <span>Email</span>
+                                    <input v-model="form.email" type="text">
+                                </p>
+                                <p>
+                                    <span>Opjet</span>
+                                    <input v-model="form.opjet" type="text">
+                                </p>
+                            </div>
+                            <div class="email-wrap message">
+                                <p>
+                                    <span>Message</span>
+                                    <textarea v-model="form.message" name="" id="" cols="30" rows="10"></textarea>
+                                </p>
+                            </div>
+
+                            <a class="envoyer" href="javascrpt:;" @click="envoyer">Envoyer</a>
+                        </div>
+                    </div>
+                    <div class="address">
+                        <img src="../img/address.png" alt="" srcset="">
+                        <div>
+                            <span class="address-desc">NOS COORDONNÉES</span>
+                            <span class="address-detail address-desc">ADRESSE: 82 BD MASSENA 75013 PARIS </span>
+                        </div>
+                        <p class="address-desc">E-mail : contact@huayitech.fr</p>
+                    </div>
+                </div>
+                <common-footer></common-footer>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
+<script>
+    //vue
+    app_all = new Vue({
+        el: "#vue_app",
+        data: {
+            isOpen: true,
+            form: {
+                nom111: '',
+                prenom: '',
+                email: '',
+                opjet: '',
+                message: ''
+            }
+        },
+        methods: {
+            handleMenu() {
+                this.isOpen = !this.isOpen
+            },
+            envoyer() {
+                console.log(this.form)
+                location = `mailto:contact@huayitech.fr?&subject=${this.form.opjet}&body=Nom: ${this.form.nom};  Prénom: ${this.form.prenom};  Email: ${this.form.email}; message: ${this.form.message}`; // mailto:contact@huayitech.fr?subject=test&cc=sample@hotmail.com&subject=主题&body=内容
+            }
+        }
+    })
+</script>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=1202"> -->
+    <!-- <meta http-equiv="imagetoolbar" content="false" name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <title>HUIYI</title>
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/multiples.css">
+    <script src="../lib/vue.min.js"></script>
+    <script src="../js/header.js"></script>
+    <script src="../js/sidebar.js"></script>
+    <script src="../js/footer.js"></script>
+</head>
+
+<body οncοntextmenu="return false">
+    <div id="vue_app">
+        <!--自定义的组件使用-->
+        <common-head @switch="handleMenu"></common-head>
+        <!--页面自有内容-->
+        <div class="content">
+            <div class="sidebar-wrap" v-if="isOpen">
+                <common-sidebar></common-sidebar>
+            </div>
+            <div :class="['content-detail', isOpen ? 'moveRight' : '']">
+                <div class="condition">
+                    <div class="fqa-wrap">
+                        <div class="fqa-text">
+                            <span>Un écran aux multiples couches de protection</span>
+                        </div>
+                    </div>
+                    <div class="img"></div>
+                    <div class="condition-content">
+                        Nos écrans sont, dans un premier temps, conçus sur la base de ceux des sociétés Samsung, LG
+                        et BOE. C'est dans un second temps que nous les perfectionnons, vous offrant un modèle final
+                        d'une grande modernité.<br /><br />
+                        Nos années d'expérience, couplés à notre attachement pour la qualité, font de nos écrans des
+                        produits, non seulement, sûrs et performants, mais aussi, très bien accueillis par nos clients.<br /><br />
+                        Nos écrans touchent de nombreux domaines : les médias, l'éducation, le monde de l'entreprise
+                        et de la finance, les transports, l'intelligence artificielle, etc.
+                    </div>
+                </div>
+                <common-footer></common-footer>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
+<script>
+    //vue
+    app_all = new Vue({
+        el: "#vue_app",
+        data: {
+            isOpen: true
+        },
+        methods: {
+            handleMenu() {
+                this.isOpen = !this.isOpen
+            }
+        }
+    })
+</script>

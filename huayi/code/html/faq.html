@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=1202"> -->
+    <!-- <meta http-equiv="imagetoolbar" content="false" name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <title>HUIYI</title>
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/fqa.css">
+    <script src="../lib/vue.min.js"></script>
+    <script src="../js/header.js"></script>
+    <script src="../js/sidebar.js"></script>
+    <script src="../js/footer.js"></script>
+</head>
+
+<body οncοntextmenu="return false">
+    <div id="vue_app">
+        <!--自定义的组件使用-->
+        <common-head @switch="handleMenu"></common-head>
+        <!--页面自有内容-->
+        <div class="content">
+            <div class="sidebar-wrap" v-if="isOpen">
+                <common-sidebar></common-sidebar>
+            </div>
+            <div :class="['content-detail', isOpen ? 'moveRight' : '']">
+                <div class="condition">
+                    <div class="fqa-wrap">
+                        <div class="fqa-text">
+                            <span>FQA</span>
+                        </div>
+                        <div class="fqa-desc">
+                            <span>Commande et Achat</span>
+                            <span class="center">Paiement et financement</span>
+                            <span>Expédition</span>
+                        </div>
+                    </div>
+                    <div class="condition-content">
+                        <p class="p2">• Commande et Achat</p>
+                        Comment puis-je effectuer une commande ?<br />
+                        Vous pouvez effectuer une commande en demandant son devis, par email (contact@huayitech.fr).
+                        Merci de préciser, dans cet email, toutes les caractéristiques de la machine voulue (type,
+                        taille d’écran,
+                        affichage, système d’exploitation, etc.), et ce, afin que nous puissions vous fournir le devis
+                        le plus précis
+                        possible.<br />
+                        Notre stock parisien est également continuellement mis à jour sur nos différentes Marketplaces
+                        (Amazon,
+                        Cdiscount, EBay, Fnac, Rakuten), où l’achat s’y fait directement.<br /><br />
+                        Quand et comment la commande doit-elle être payée ?<br />
+                        Sur nos Marketplaces, la vente se fait directement, selon les modalités de la Marketplace sur
+                        laquelle vous
+                        effectuez l’achat. Il vous est possible d’échelonner le paiement si la commande se fait par
+                        email.<br /><br />
+                        Comment savoir si un article est encore disponible dans notre stock parisien?<br />
+                        Notre stock actuellement disponible est continuellement mis à jour sur nos marketplaces.<br />
+                        Si la machine est en rupture de stock, nous pouvons vous la commander, mais vous devrez attendre
+                        3
+                        semaines supplémentaires pour son acheminement en France.<br /><br />
+                        Puis-je annuler ma commande ?<br />
+                        Chaque commande est annulable, à condition que celle-ci ne soit pas emballée dans l'entrepôt.<br /><br />
+                        Comment puis-je suivre ma commande ?<br />
+                        Les commandes livrées avec UPS possèdent un numéro de suivi, permettant le traçage de la
+                        livraison.<br />
+                        Si vous habitez en Ile de France, nous pouvons vous livrer gratuitement le produit, cependant,
+                        la commande
+                        ne disposera pas de numéro de suivi.<br /><br />
+                        Puis-je éditer les informations d’une commande (destinataire, adresse etc...), et ce, après
+                        l’avoir confirmée ?<br />
+                        Cela est tout à fait possible. Pour ce faire, merci de contacter notre service client.<br /><br />
+                        Puis-je ajouter un article à une commande déjà confirmée ?<br />
+                        Vous ne pouvez pas ajouter d’articles à une commande déjà confirmée. Si vous désirez acheter des
+                        articles
+                        supplémentaires, il vous suffit d’effectuer une nouvelle commande.<br /><br />
+                        Quelles sont les informations personnelles qu’il me faut fournir lors de ma commande ?
+                        Lorsque vous effectuez une commande, vous devez indiquer votre nom complet, une adresse de
+                        valide pour
+                        la réception du colis, un numéro de téléphone ainsi que un e-mail, et ce, afin que l’on puisse
+                        vous informer du
+                        déroulement de l’expédition.<br /><br />
+                        <p class="p2">• Paiement et financement</p>
+                        Avec quels moyens de paiement puis-je payer ma commande ?<br />
+                        Si l’achat se fait en boutique, vous pouvez payer votre commande par espèce, chèque ou virement.
+                        Si
+                        l’achat se fait en ligne, vous pouvez payer votre commande par virement, carte de crédit, ou
+                        PayPal.<br /><br />
+                        Les frais de livraison sont-ils inclus dans la facture?<br />
+                        Oui.<br /><br />
+                        Puis-je obtenir une garantie si j'ai perdu ma facture?<br />
+                        Oui.<br /><br />
+                        <p class="p2">• Expédition</p>
+                        Quand ma commande sera-t-elle expédiée?<br />
+                        L’expédition sera effectuée dans des temps impartis selon la taille de la commande :<br />
+                        Une commande de moins de 30 kg sera expédiée dans les 3-4 jours ouvrables suite à la validation
+                        de la
+                        commande.
+                        Une commande de plus de 30 kg sera expédiée dans les 10 jours ouvrables suite à la validation de
+                        la
+                        commande.<br /><br />
+                        A combien s’élèveront les frais de livraison ?<br />
+                        Si vous habitez hors d’Ile de France, nous vous enverrons la commande via UPS. Les frais
+                        dépendront du
+                        poids et de la taille de la commande. Les prix sont disponibles en ligne sur le site internet
+                        d’UPS.<br />
+                        Si vous habitez en Ile de France, nous pouvons, si vous le désirez, vous livrer gratuitement la
+                        commande.
+                    </div>
+                </div>
+                <common-footer></common-footer>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
+<script>
+    //vue
+    app_all = new Vue({
+        el: "#vue_app",
+        data: {
+            isOpen: true
+        },
+        methods: {
+            handleMenu() {
+                this.isOpen = !this.isOpen
+            }
+        }
+    })
+</script>

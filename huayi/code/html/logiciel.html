@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=1202"> -->
+    <!-- <meta http-equiv="imagetoolbar" content="false" name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <title>HUIYI</title>
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/logiciel.css">
+    <script src="../lib/vue.min.js"></script>
+    <script src="../js/header.js"></script>
+    <script src="../js/sidebar.js"></script>
+    <script src="../js/footer.js"></script>
+</head>
+
+<body οncοntextmenu="return false">
+    <div id="vue_app">
+        <!--自定义的组件使用-->
+        <common-head @switch="handleMenu"></common-head>
+        <!--页面自有内容-->
+        <div class="content">
+            <div class="sidebar-wrap" v-if="isOpen">
+                <common-sidebar></common-sidebar>
+            </div>
+            <div :class="['content-detail', isOpen ? 'moveRight' : '']">
+                <div class="condition">
+                    <h2>Logiciel de recherche d'informations</h2>
+                    <div class="condition-content">
+                        Grâce à notre système de diffusion d'informations multimédias, les informations multimédias se
+                        construisent et se diffusent à travers tout un réseau. Ce système est professionnel,
+                        « intelligent »
+                        eszzt accessible à tous.<br /><br />
+                        Le processus est simple : l'utilisateur émet une requête dans un programme client, la demande
+                        est ensuite envoyée au serveur. Le serveur recherche la requête reçue dans la base de données
+                        et renvoit les résultats au programme client. Enfin, le programme client affiche les résultats
+                        sur le
+                        périphérique de sortie, y donnant accès à l’utilisateur.<br /><br />
+                        Ainsi, le client peut comprendre, en peu de temps, les produits et la culture de l'entreprise.
+                        <br /><br />
+                        <p class="p2">Domaines d’application</p>
+                        1. Système d'enquête fiscale<br /><br />
+                        2. Système de requête d’hôtel<br /><br />
+                        3. Système de surveillance de bâtiments<br /><br />
+                        4. Système d'interrogation du trafic<br /><br />
+                        5. Système d’accès public aux services médicaux<br /><br />
+                        6. Système d'analyse des transactions relatives aux droits de propriété<br /><br />
+                        7. Système d'enquête bancaire<br /><br />
+                        8. Système de recherche sur les destinations touristiques<br /><br />
+                        9. Système de requête tactile d’un centre commercial<br /><br />
+                        10. Système d'information sur les entreprises de télécommunications<br /><br />
+                        11. Système de navigation tactile<br /><br />
+                        12. Système de divulgation des affaires gouvernementales<br /><br />
+                        13. Système d'enquête et de navigation dans les lieux publics<br /><br />
+                        14. Système d’enquête dans les lieux de divertissement et de loisirs haut de gamme<br /><br />
+                        15. Système d'interrogation dans d’autres lieux (ex. salle de réception d'entreprise)<br /><br />
+                    </div>
+                </div>
+                <common-footer></common-footer>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
+<script>
+    //vue
+    app_all = new Vue({
+        el: "#vue_app",
+        data: {
+            isOpen: true
+        },
+        methods: {
+            handleMenu() {
+                this.isOpen = !this.isOpen
+            }
+        }
+    })
+</script>
