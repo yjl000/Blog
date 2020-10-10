@@ -5,6 +5,7 @@ import Game from './view/game/index';
 import Reservation from './view/form/form';
 import Boil from './view/boil/boil';
 import { Facebook } from "react-content-loader";
+import SignUpDialog from './view/combination/index'
 
 const MyFacebookLoader = () => <Facebook />
 class App extends React.Component {
@@ -25,6 +26,7 @@ class App extends React.Component {
                 <Clock />
                 <Reservation />
                 <Boil />
+                <SignUpDialog />
               </div>
     }
     setTimeout(() => {
