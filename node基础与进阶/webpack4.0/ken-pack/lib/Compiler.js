@@ -21,8 +21,29 @@ class Compiler {
     // 工作路径
     this.root = process.cwd();
   }
-  getSource(modulePath){
+  // 获取对应路径的源码
+  getSource(modulePath){ // ./index.less
+    let rules = this.config.module.rules; // 获取loader规则
     let content = fs.readFileSync(modulePath, 'utf8');
+    // 遍历处理规则
+    for (let i = 0; i < rules.length; i++) {
+      let rule = rules[i];
+      let { test, use } = rule;
+      let len = use.length - 1; // 从后面往前匹配use
+      if (test.test(modulePath)) { // 正则匹配上，证明这个模块需要loader
+        // loader获取对应的loader函数
+        function normalLoader() {
+          let loader = require(use[len--]);
+          content = loader(content);
+          if (len >= 0) {
+            normalLoader();
+          }
+        }
+        normalLoader();
+        
+      }
+      
+    } 
     return content;
   }
   // 解决源码
