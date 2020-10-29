@@ -1,6 +1,9 @@
 import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import Demo1 from './index_demo1';
+import Demo2 from './index_state-demo';
+import Demo3 from './index_return_func_demo'
 
 const Display = ({counter}) => <div>{counter}</div>
 
@@ -17,6 +20,9 @@ const App = () => {
       <Button handleClick={increaseByOne} text='plus'/>
       <Button handleClick={setTozero} text='zero'/>
       <Button handleClick={decreaseByOne} text='minus'/>
+      <Demo1 />
+      <Demo2 />
+      <Demo3 />
     </div>
   )
 }

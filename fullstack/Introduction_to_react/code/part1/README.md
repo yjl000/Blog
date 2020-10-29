@@ -1,3 +1,12 @@
+2020/10/29笔记：
+1、react不建议直接修改状态（更多的是不能直接修改对象状态），react更新数据的机制是用新老对象对比，如果没有改变，就不进行渲染，有改变才会渲染，这个区别angular的watchdeep监听对象，react性能会比较好。一般情况下，react建议对象状态的改变都是创建一个新对象去更新；
+2、不能在条件语句、循环语句、组件函数里面的函数等任何不是定义组件函数的地方调用useState等Hook函数
+3、事件处理程序不能是对函数的调用，必须是函数或者对函数的应用
+4、不要在组件内部定义其他组件
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
