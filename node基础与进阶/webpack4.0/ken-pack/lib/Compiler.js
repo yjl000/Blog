@@ -5,6 +5,7 @@ let t = require('@babel/types')
 let traverse = require('@babel/traverse').default;
 let generator = require('@babel/generator').default;
 let ejs = require('ejs');
+let {SyncHook} = require('tapable')
 // babylon 主要把源码转换成ast
 // @babel/traverse
 // @babel/types
@@ -20,6 +21,25 @@ class Compiler {
     this.entry = config.entry; // 入口路径
     // 工作路径
     this.root = process.cwd();
+    this.hooks = {
+      entryOption: new SyncHook(),
+      compile: new SyncHook(),
+      afterPulgins: new SyncHook(),
+      afterCompile: new SyncHook(),
+      run: new SyncHook(),
+      emit: new SyncHook(),
+      done: new SyncHook(),
+    }
+
+    // 如果传递了plugins参数
+    let plugins = this.config.plugins;
+    if (Array.isArray(plugins)) {
+      plugins.forEach(plugin => {
+        plugin.apply(this)
+      })
+    }
+
+    this.hooks.afterPulgins.call();
   }
   // 获取对应路径的源码
   getSource(modulePath){ // ./index.less
@@ -99,9 +119,15 @@ class Compiler {
   }
   run() {
     // 执行 并且创建模块的依赖关系
+    this.hooks.run.call();
+    this.hooks.compile.call();
     this.buildModule(path.resolve(this.root, this.entry), true);
+    this.hooks.afterCompile.call();
+    
     // 发射一个文件 打包后的路径
     this.emitFile();
+    this.hooks.emit.call();
+    this.hooks.done.call();
   }
 }
 
