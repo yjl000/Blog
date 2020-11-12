@@ -1,0 +1,7 @@
+console.log('loader-webpack')
+// -! 不会让文件再去通过pre + normal loader来处理了
+// !没有normal
+// !!什么都不要，只要行内loader
+let str = require('!!inline-loader!./a.js')
+
+// loader 默认是由两部分组成 pitch normal
