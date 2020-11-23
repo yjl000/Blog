@@ -14,19 +14,30 @@ module.exports = {
     // }
   },
   devtool: 'source-map',
+  watch: true,
   module: {
     rules: [
       {
         test: /\.js$/,
         use: {
-          loader: 'babel-loader',
+          loader: 'banner-loader',
           options: {
-            presets: [
-              '@babel/preset-env'
-            ]
-          } 
+            text: 'ken',
+            filename: path.resolve(__dirname, 'banner.js')
+          }
         }
       }
+      // {
+      //   test: /\.js$/,
+      //   use: {
+      //     loader: 'babel-loader',
+      //     options: {
+      //       presets: [
+      //         '@babel/preset-env'
+      //       ]
+      //     } 
+      //   }
+      // }
     ]
 
     // loader的分类pre在前面， post在后面，normal在中间
