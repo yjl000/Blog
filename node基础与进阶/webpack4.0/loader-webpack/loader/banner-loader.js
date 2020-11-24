@@ -19,7 +19,7 @@ function loader(source) {
 
     validate(scheme, options, 'banner-loader');
     if (options.filename) {
-        this.addDependency(options.filename); // 自动添加文件依赖
+        this.addDependency(options.filename); // 自动添加文件依赖 每次更改依赖的文件就会重新编译
         fs.readFile(options.filename, 'utf8', (err, data) => {
             cb(err, `/**${data}**/${source}`)
         })
