@@ -22,7 +22,7 @@ module.exports = {
         use: {
           loader: 'banner-loader',
           options: {
-            text: 'kenyang',
+            text: 'yangjingli',
             filename: path.resolve(__dirname, 'banner.js')
           }
         }
