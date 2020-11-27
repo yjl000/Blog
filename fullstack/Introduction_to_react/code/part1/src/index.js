@@ -5,6 +5,7 @@ import Demo1 from './index_demo1';
 import Demo2 from './index_state-demo';
 import Demo3 from './index_return_func_demo';
 import Unicafe from './unicafe'
+import Anecdotes from './anecdotes'
 
 const Display = ({counter}) => <div>{counter}</div>
 
@@ -26,6 +27,9 @@ const App = () => {
       <Demo3 />
       <br /><br />
       <Unicafe />
+      <br />
+      <br />
+      <Anecdotes />
     </div>
   )
 }

@@ -5,11 +5,32 @@ const Button = ({handleClick, text}) => {
     <button onClick={handleClick}>{text}</button>
   )
 }
+
+const Statistics = ({good, neutral, bad, compute}) => {
+  if (compute.all === 0) {
+    return (
+      <div>No feedback given</div>
+    )
+  }
+  return (
+    <div>
+      <ShowResult text="good" result={good}></ShowResult>
+      <ShowResult text="neutral" result={neutral}></ShowResult>
+      <ShowResult text="bad" result={bad}></ShowResult>
+      <ShowResult text="all" result={compute.all}></ShowResult>
+      <ShowResult text="average" result={compute.average}></ShowResult>
+      <ShowResult text="positive" result={compute.positive}></ShowResult>
+    </div>
+  )
+
+}
+
 const ShowResult = ({text, result}) => {
   if (text === 'positive') {
     result = (result * 100) + '%'
   }
   return (
+    
     <p>{text} {result}</p>
   )
 }
@@ -67,12 +88,7 @@ const Unicafe = () => {
       <Button handleClick={handleneutralClick} text="neutral"></Button>
       <Button handleClick={handleBadClick} text="bad"></Button>
       <h4>statistics</h4>
-      <ShowResult text="good" result={good}></ShowResult>
-      <ShowResult text="neutral" result={neutral}></ShowResult>
-      <ShowResult text="bad" result={bad}></ShowResult>
-      <ShowResult text="all" result={compute.all}></ShowResult>
-      <ShowResult text="average" result={compute.average}></ShowResult>
-      <ShowResult text="positive" result={compute.positive}></ShowResult>
+      <Statistics good={good} bad={bad} neutral={neutral} compute={compute}></Statistics>
     </div>
   )
 }
