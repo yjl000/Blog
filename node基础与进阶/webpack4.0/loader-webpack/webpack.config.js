@@ -8,7 +8,7 @@ module.exports = {
   },
   resolveLoader: {
     modules: ['node_modules', path.resolve(__dirname, 'loader')]
-    // 别名
+    // 获取文件别名
     // alias: {
     //   loader1: path.resolve(__dirname, 'loader', 'loader1')
     // }
