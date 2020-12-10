@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="main">
+    <div class="sidebar">这是sidebar区域</div>
+    <div class="content">这是内容区域</div>
+  </div>
+</body>
+</html>
+
+<style>
+  .main {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: minmax(150px, 25%) 1fr;
+  }
+  .sidebar {
+    background-color: burlywood;
+  }
+  .content {
+    background-color: cornflowerblue;
+  }
+</style>
