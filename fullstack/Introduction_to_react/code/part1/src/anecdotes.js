@@ -6,7 +6,7 @@ const Anecdotes = (props) => {
   const [selected, setSelected] = useState(0)
   const [num, setNum] = useState(0)
   const [maxIndex, setMaxIndex] = useState(0)
-  const [points, setPoints] = useState(new Array(6+1).join('0').split('').map(parseFloat))
+  const [points, setPoints] = useState(new Array(7).fill(0)) // new Array(6+1).join('0').split('').map(parseFloat)
   
   const handleSelected = () => {
     let newNum = getRandomIntSection(0, 5)
