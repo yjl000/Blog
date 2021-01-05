@@ -16,12 +16,12 @@ ReactDOM.render(
     <br />
     *********************************************
     {/* <App /> */}
-    {/* <PhoneBook /> */}
+    <PhoneBook />
     <br />
     <br />
     <br />
     *********************************************
-    <ContriesData />
+    {/* <ContriesData /> */}
   </React.StrictMode>,
   document.getElementById('root')
 );

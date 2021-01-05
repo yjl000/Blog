@@ -6,12 +6,11 @@ const Countries = (props) => {
   let [showArr, setShowArr] = useState([])
   let showCotent = null
 
-  const handleButtonState = (event) => {
-    let countryName = event.target.value
-    if (showArr.indexOf(countryName) !== -1) {
-      showArr.splice(showArr.indexOf(countryName), 1)
+  const handleButtonState = (name) => {
+    if (showArr.indexOf(name) !== -1) {
+      showArr.splice(showArr.indexOf(name), 1)
     } else {
-      showArr.push(event.target.value)
+      showArr.push(name)
     }
     setShowArr([...showArr])
   }
@@ -26,7 +25,7 @@ const Countries = (props) => {
         <div key={index}>
           <span>{item.name}</span>
 
-          <button value={item.name} onClick={handleButtonState}>{showArr.includes(item.name) ? 'hidden' : 'show'}</button>
+          <button value={item.name} onClick={() => handleButtonState(item.name)}>{showArr.includes(item.name) ? 'hidden' : 'show'}</button>
           <div>
             {
               showArr.includes(item.name) ? <CountriesOne countriObj={item}></CountriesOne> : <div></div>

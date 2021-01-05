@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import Filter from './components/person/filter'
 import PersonForm from './components/person/personForm'
 import Person from './components/person/persons'
-import axios from 'axios'
+import personServer from './server/person'
 
 const PhoneBook = () => {
   const [persons, setPerson] = useState([]);
@@ -13,41 +13,53 @@ const PhoneBook = () => {
   const [filterPerson, setFilterPerson] = useState(persons);
 
   useEffect(() => {
-    axios
-      .get('http://localhost:3001/persons')
-      .then(res => {
-        setPerson(res.data)
-        setFilterPerson(res.data);
-      })
+    resetData()
   }, [])
+
+  const resetData = () => {
+    personServer.getAll().then(initData => {
+      setPerson(initData)
+      setFilterPerson(initData);
+    })
+  }
 
   const addName = (event) => {
     event.preventDefault();
     const flag = persons.some((person) => person.name === newPerson);
-   
+    const person = persons.find(n => n.name === newPerson)
+    
+    const newPersonObj = {
+      name: newPerson,
+      number: newNumber,
+    }
+
     if (flag) {
-      alert(`${newPerson} is already added to phonebook`);
+      console.log('newPerson: ', person)
+      if (window.confirm(`${newPerson} is already added to phonebook, replace the old number with a new one?`)) {
+        personServer.update(person.id, newPersonObj).then(res => {
+          resetData()
+        })
+      }
+
       setNewPerson('');
       setNewNumber('');
       return;
     }
-    const newPersonObj = {
-      name: newPerson,
-      number: newNumber,
-      id: persons.length + 1
-    }
-    setPerson(persons.concat(newPersonObj));
-    setFilterPerson(persons.concat(newPersonObj));
-    setNewPerson('');
-    setNewNumber('');
-    setSearchName('');
+
+    personServer.create(newPersonObj).then(newPerson => {
+      setPerson(persons.concat(newPerson));
+      setFilterPerson(persons.concat(newPerson));
+      setNewPerson('');
+      setNewNumber('');
+      setSearchName('');
+    })
+
+    
   }
   const handleValueChange = (event) => {
-    console.log(event.target.value);
     setNewPerson(event.target.value);
   }
   const handleNumberChange = (event) => {
-    console.log(event.target.value);
     setNewNumber(event.target.value);
   }
 
@@ -73,7 +85,7 @@ const PhoneBook = () => {
         handleValueChange={handleValueChange}
         handleNumberChange={handleNumberChange}  />
       <h2>Number</h2>
-      {filterPerson.map(person => <Person key={person.id} person={person}></Person>)}
+      {filterPerson.map(person => <Person key={person.id} person={person} resetData={resetData} ></Person>)}
     </div>
   )
 }
