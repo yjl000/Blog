@@ -1,20 +1,25 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Filter from './components/person/filter'
 import PersonForm from './components/person/personForm'
 import Person from './components/person/persons'
+import axios from 'axios'
 
 const PhoneBook = () => {
-  const [persons, setPerson] = useState([
-    {name: 'Ken', id: 0, number: '12345678901'},
-    {name: 'yang', id: 1, number: '12345678901'},
-    {name: 'kenyang', id: 2, number: '12345678901'},
-    {name: 'tao', id: 3, number: '12345678901'}
-  ]);
+  const [persons, setPerson] = useState([]);
 
   const [newPerson, setNewPerson] = useState('');
   const [newNumber, setNewNumber] = useState('');
   const [searchName, setSearchName] = useState('');
   const [filterPerson, setFilterPerson] = useState(persons);
+
+  useEffect(() => {
+    axios
+      .get('http://localhost:3001/persons')
+      .then(res => {
+        setPerson(res.data)
+        setFilterPerson(res.data);
+      })
+  }, [])
 
   const addName = (event) => {
     event.preventDefault();

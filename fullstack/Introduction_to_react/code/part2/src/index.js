@@ -1,14 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import Test from './part2-4'
 import App from './App';
 import PhoneBook from './PhoneBook'
+import ContriesData from './contriesData'
+
 
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
-    <PhoneBook />
+    {/* <Test /> */}
+    <br />
+    <br />
+    <br />
+    *********************************************
+    {/* <App /> */}
+    {/* <PhoneBook /> */}
+    <br />
+    <br />
+    <br />
+    *********************************************
+    <ContriesData />
   </React.StrictMode>,
   document.getElementById('root')
 );
