@@ -3,6 +3,7 @@ import Filter from './components/person/filter'
 import PersonForm from './components/person/personForm'
 import Person from './components/person/persons'
 import personServer from './server/person'
+import Notify from './components/notifi/index'
 
 const PhoneBook = () => {
   const [persons, setPerson] = useState([]);
@@ -11,6 +12,8 @@ const PhoneBook = () => {
   const [newNumber, setNewNumber] = useState('');
   const [searchName, setSearchName] = useState('');
   const [filterPerson, setFilterPerson] = useState(persons);
+  const [successMessage, setSuccessMessage] = useState('')
+  const [state, setState] = useState('success')
 
   useEffect(() => {
     resetData()
@@ -34,10 +37,15 @@ const PhoneBook = () => {
     }
 
     if (flag) {
-      console.log('newPerson: ', person)
       if (window.confirm(`${newPerson} is already added to phonebook, replace the old number with a new one?`)) {
         personServer.update(person.id, newPersonObj).then(res => {
           resetData()
+        }).catch(err => {
+          setState('error')
+          setSuccessMessage(`Information of ${person.name} has already been removed from server`)
+          setTimeout(() => {
+            setSuccessMessage('')
+          }, 5000);
         })
       }
 
@@ -52,6 +60,11 @@ const PhoneBook = () => {
       setNewPerson('');
       setNewNumber('');
       setSearchName('');
+      setState('success')
+      setSuccessMessage(`Added ${newPerson.name}`)
+      setTimeout(() => {
+        setSuccessMessage('')
+      }, 5000);
     })
 
     
@@ -76,6 +89,7 @@ const PhoneBook = () => {
   return (
     <div>
       <h2>PhoneBook</h2>
+      <Notify message={successMessage} className={state}></Notify>
       <Filter searchName={searchName} handleSearchChange={handleSearchChange} />
       <h2>Add a new</h2>
       <PersonForm 
