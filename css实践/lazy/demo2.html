@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="content">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+  </div>
+</body>
+</html>
+
+<style>
+  .content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+  }
+  .item {
+    flex: 1 1 150px; /*<flex-grow>如果有多余空间，项目是否可以扩大  <flex-shrink>指定如果宽度不足，项目是否可以缩小  <flex-basis>初始宽度;*/
+    background-color: aquamarine;
+    padding: 20px;
+    margin: 10px;
+    text-align: center;
+  }
+
+</style>

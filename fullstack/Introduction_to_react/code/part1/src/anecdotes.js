@@ -1,17 +1,51 @@
 import React, {useState} from 'react'
-
+function getRandomIntSection(m, n) {
+  return (Math.floor(Math.random() * (n - m + 1)) + m)
+}
 const Anecdotes = (props) => {
   const [selected, setSelected] = useState(0)
+  const [num, setNum] = useState(0)
+  const [maxIndex, setMaxIndex] = useState(0)
+  const [points, setPoints] = useState(new Array(7).fill(0)) // new Array(6+1).join('0').split('').map(parseFloat)
+  
   const handleSelected = () => {
-    const num = parseInt(6 - Math.random() * 6, 10)
-    // setSelected
+    let newNum = getRandomIntSection(0, 5)
+    setNum(newNum)
+    setSelected(newNum)
+  }
+
+  const handleVote = () => {
+    const newPoints = [...points]
+    newPoints[num]++
+    setPoints(newPoints)
+    for (let i = 0; i < newPoints.length; i++) {
+      if (Math.max(...newPoints) === newPoints[i]) {
+        setMaxIndex(i)
+        break
+      }
+      
+    }
+
   }
   return (
     <div>
-      <button onClick={handleSelected}>next anecdote</button>
+      <h3>Anecdotes of the day</h3>
       <p>
         {props.anecdotes[selected]}
       </p>
+      <p>has {points[num]} votes</p>
+      <div>
+        <button onClick={handleVote}>vote</button>
+        <button onClick={handleSelected}>next anecdote</button>
+      </div>
+      <br />
+      <br />
+      <h3>Anecdotes with most votes</h3>
+      <div>
+        <p>has {Math.max(...points)} votes</p>
+        <p>{props.anecdotes[maxIndex]}</p>
+      </div>
+      
       
     </div>
   )
