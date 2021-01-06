@@ -6,14 +6,28 @@
 
 // loader 默认是由两部分组成 pitch normal
 
-class Person {
-    constructor () {
-        this.name = 'kenyang'
-    }
-    getName () {
-        return this.name
-    }
-}
+/* banner-loader*/
+// class Person {
+//     constructor () {
+//         this.name = 'kenyang'
+//     }
+//     getName () {
+//         return this.name
+//     }
+// }
 
-const ken = new Person();
-console.log(ken.getName())
+// const ken = new Person();
+// console.log(ken.getName())
+
+
+/*  url-loader & file-loader */
+
+// import p from './test.png'
+// let img  = document.createElement('img');
+// img.src = p;
+// document.body.appendChild(img)
+
+
+// less-loader & css-loader
+import './index.less'
+

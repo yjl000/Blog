@@ -18,6 +18,23 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.less$/,
+        use: ['style-loader', 'css-loader', 'less-loader']
+      },
+      {
+        test: /\.png$/,
+        // 根据图片生成一个md5 发射到dist目录，file-loader还会返回当前的图片路径
+        // use: 'file-loader'
+        // url-loader 处理路径交给file-loader
+        use: {
+          loader: 'url-loader',
+          options: {
+            limit: 20 * 1024
+          }
+        }
+        
+      },
+      {
         test: /\.js$/,
         use: {
           loader: 'banner-loader',
