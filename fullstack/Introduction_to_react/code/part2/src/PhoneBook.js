@@ -55,8 +55,9 @@ const PhoneBook = () => {
     }
 
     personServer.create(newPersonObj).then(newPerson => {
+      
       setPerson(persons.concat(newPerson));
-      setFilterPerson(persons.concat(newPerson));
+      setFilterPerson(filterPerson.concat(newPerson));
       setNewPerson('');
       setNewNumber('');
       setSearchName('');

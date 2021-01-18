@@ -5,7 +5,7 @@ node基础与进阶/webpack4.0/基础配置/node_modules/*
 origin/node_modules/*
 src/application/logs/*
 node_modules/*
-
+.env
 .DS_Store
 node_modules
 /dist
