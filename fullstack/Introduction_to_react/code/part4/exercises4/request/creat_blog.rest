@@ -1,0 +1,9 @@
+POST http://localhost:3003/api/blogs
+content-type: application/json
+
+{
+    "title":"dddeee",
+    "author": "kenyang",
+    "url": "https://jelly.jd.com/article/5febdfbb846cc00148ae36d7",
+    "likes": 5
+}
