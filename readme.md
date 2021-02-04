@@ -36,6 +36,10 @@
 
 [函数参数的传递方式](https://github.com/yjl000/Blog/blob/master/js基础与进阶/基础/函数参数都是按值传递的？！.md)
 
+### 日常记录
+
+[一行多列不同尺寸商品图片固定宽高比例的实现](https://github.com/yjl000/Blog/blob/master/css实践/日常记录/[记录]一行多列不同尺寸图片固定宽高比的实现.md)
+
 ### 进阶笔记
 
 [浏览器事件循环VSNode循环](https://github.com/yjl000/Blog/blob/master/进阶笔记/浏览器事件循环VSNode事件循环.md)
