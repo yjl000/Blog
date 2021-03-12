@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebGL demo1</title>
+  <script src="../../../libs/webgl-utils.js"></script>
+</head>
+<body>
+  <canvas id="canvas" width="300" height="300"></canvas>
+</body>
+</html>
+
+<script id="2d-vertex-shader" type="x-shader/x-shader">
+  attribute vec4 a_position;
+
+  void main() {
+    gl_Position = a_position;
+  }
+</script>
+
+<script id="2d-fragment-shader" type="x-shader/x-fragment">
+  void main() {
+    gl_FragColor = vec4(0, 1, 0, 1);
+  }
+</script>
+
+<script src="./demo1.js"></script>
