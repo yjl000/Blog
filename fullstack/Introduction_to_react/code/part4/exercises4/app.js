@@ -2,6 +2,8 @@ const config = require('./utils/config')
 const express = require('express')
 const app = express()
 const cors = require('cors')
+// 错误处理库，使用这个库，可以不用try catch处理async await的错误
+require('express-async-errors')
 const blogsRouter = require('./controllers/blog')
 const middleware = require('./utils/middleware')
 const logger = require('./utils/logger')
