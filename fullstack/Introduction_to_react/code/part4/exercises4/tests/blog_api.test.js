@@ -19,135 +19,166 @@ beforeEach(async () => {
 
 })
 
-// 验证blogs数量
-test('all blogs are returned', async () => {
-  const response = await api.get('/api/blogs')
-  expect(response.body).toHaveLength(helper.initialBlogs.length)
+describe('when there is initially some blogs saved', () => {
+  test('blogs are returned as json', async () => {
+    await api
+      .get('/api/blogs')
+      .expect(200)
+      .expect('Content-Type', /application\/json/)
+  })
+
+  // 验证blogs数量
+  test('all blogs are returned', async () => {
+    const response = await api.get('/api/blogs')
+    expect(response.body).toHaveLength(helper.initialBlogs.length)
+  })
+
+  // 验证是否包含某个用户
+  test('a specific blog is within the returned blogs', async () => {
+    const response = await api.get('/api/blogs')
+    const authors = response.body.map(r => r.author)
+    expect(authors).toContain(
+      'ken'
+    )
+  })
 })
 
-// 验证是否包含某个用户
-test('a specific blog is within the returned notes', async () => {
-  const response = await api.get('/api/blogs')
-  const authors = response.body.map(r => r.author)
-  expect(authors).toContain(
-    'ken'
-  )
+describe('viewing a specific blog', () => {
+  // 测试查找单个blog
+  test('a specific blog can be viewed', async () => {
+    const blogsAtStart = await helper.blogsInDb()
+
+    const blogToView = blogsAtStart[0]
+
+    const resultBlog = await api
+      .get(`/api/blogs/${blogToView.id}`)
+      .expect(200)
+      .expect('Content-Type', /application\/json/)
+
+    const processedBlogToView = JSON.parse(JSON.stringify(blogToView))
+    expect(resultBlog.body).toEqual(processedBlogToView)
+  })
+
+  // 测试blog唯一属性命名
+  test('is id for flag', async () => {
+    const blogsAtStart = await helper.blogsInDb()
+    const blogToFlag = blogsAtStart[0]
+    expect(blogToFlag.id).toBeDefined()
+  })
 })
 
-// 验证添加新的blog
-test('a valid blog can be added', async () => {
-  const newBlog = {
-      title: 'title3',
-      author: 'kenyang',
-      url: 'www.baidu.com',
-      likes: 110
-  }
-  // 添加新blog
-  await api
-  .post('/api/blogs')
-  .send(newBlog)
-  .expect(201)
-  .expect('Content-Type', /application\/json/)
-
-  // 获取所有blog
-  // const response = await api.get('/api/blogs')
-  const blogsAtEnd = await helper.blogsInDb()
-  const titles = blogsAtEnd.map(r => r.title)
-  // 验证长度是否加上
-  expect(blogsAtEnd).toHaveLength(helper.initialBlogs.length + 1)
-  // 验证新加上的blog的title是否正确
-  expect(titles).toContain(
-    'title3'
-  )
-})
-
-// 验证没有title的blog能否被添加
-test('blog without title is not added', async () => {
-  const newBlog = {
-    author: 'yjl',
-    url: 'www.baidu.com'
-  }
-
-  await api
-  .post('/api/blogs')
-  .send(newBlog)
-  .expect(400)
-
-  // const response = await api.get('/api/blogs')
-  const blogsAtEnd = await helper.blogsInDb()
-  expect(blogsAtEnd).toHaveLength(helper.initialBlogs.length)
-})
-
-// 测试查找单个blog
-test('a specific blog can be viewed', async () => {
-  const blogsAtStart = await helper.blogsInDb()
-
-  const blogToView = blogsAtStart[0]
-
-  const resultBlog = await api
-    .get(`/api/blogs/${blogToView.id}`)
-    .expect(200)
+describe('addition of a new blog', () => {
+  // 验证添加新的blog
+  test('a valid blog can be added', async () => {
+    const newBlog = {
+        title: 'title3',
+        author: 'kenyang',
+        url: 'www.baidu.com',
+        likes: 110
+    }
+    // 添加新blog
+    await api
+    .post('/api/blogs')
+    .send(newBlog)
+    .expect(201)
     .expect('Content-Type', /application\/json/)
 
-  const processedBlogToView = JSON.parse(JSON.stringify(blogToView))
-  expect(resultBlog.body).toEqual(processedBlogToView)
-})
+    // 获取所有blog
+    // const response = await api.get('/api/blogs')
+    const blogsAtEnd = await helper.blogsInDb()
+    const titles = blogsAtEnd.map(r => r.title)
+    // 验证长度是否加上
+    expect(blogsAtEnd).toHaveLength(helper.initialBlogs.length + 1)
+    // 验证新加上的blog的title是否正确
+    expect(titles).toContain(
+      'title3'
+    )
+  })
+
+// 验证没有title的blog能否被添加
+  test('blog without title is not added', async () => {
+    const newBlog = {
+      author: 'yjl',
+      url: 'www.baidu.com'
+    }
+
+    await api
+    .post('/api/blogs')
+    .send(newBlog)
+    .expect(400)
+
+    // const response = await api.get('/api/blogs')
+    const blogsAtEnd = await helper.blogsInDb()
+    expect(blogsAtEnd).toHaveLength(helper.initialBlogs.length)
+  })
+
+
 // 删除某个blog
-test('a blog can be delete', async () => {
-  const blogsAtStart = await helper.blogsInDb()
-  const blogToDelete = blogsAtStart[0]
+  test('a blog can be delete', async () => {
+    const blogsAtStart = await helper.blogsInDb()
+    const blogToDelete = blogsAtStart[0]
 
-  await api
-    .delete(`/api/blogs/${blogToDelete.id}`)
-    .expect(204)
+    await api
+      .delete(`/api/blogs/${blogToDelete.id}`)
+      .expect(204)
 
-  const blogsAtEnd = await helper.blogsInDb()
-  expect(blogsAtEnd).toHaveLength(
-    helper.initialBlogs.length - 1
-  )
+    const blogsAtEnd = await helper.blogsInDb()
+    expect(blogsAtEnd).toHaveLength(
+      helper.initialBlogs.length - 1
+    )
 
-  const titles = blogsAtEnd.map(t => t.title)
-  
-  expect(titles).not.toContain(blogToDelete.title)
-})
+    const titles = blogsAtEnd.map(t => t.title)
+    
+    expect(titles).not.toContain(blogToDelete.title)
+  })
 
-// 测试blog唯一属性命名
-test('is id for flag', async () => {
-  const blogsAtStart = await helper.blogsInDb()
-  const blogToFlag = blogsAtStart[0]
-  expect(blogToFlag.id).toBeDefined()
-})
+  // 测试更新likes
+  test('update blog likes', async () => {
+    const blogsAtStart = await helper.blogsInDb()
+    const blogToUpdate = blogsAtStart[0]
+    const newLikes = {
+      likes: 111
+    }
+    await api
+      .put(`/api/blogs/${blogToUpdate.id}`)
+      .send(newLikes)
+      .expect(200)
+
+    const resultBlog = await api
+      .get(`/api/blogs/${blogToUpdate.id}`)
+      .expect(200)
+      .expect('Content-Type', /application\/json/)
+    expect(resultBlog.body.likes).toEqual(newLikes.likes)
+  })
 
 // 测试如果请求中缺少like 属性，它将默认为值0
-test('if not like, it is value for zero', async () => {
-  const newBlog = {
-    title: 'title5',
-    author: 'yjltxy',
-    url: 'www.baidu.com'
-  }
-  // 添加新blog
-  await api
-  .post('/api/blogs')
-  .send(newBlog)
-  .expect(201)
-  .expect('Content-Type', /application\/json/)
+  test('if not like, it is value for zero', async () => {
+    const newBlog = {
+      title: 'title5',
+      author: 'yjltxy',
+      url: 'www.baidu.com'
+    }
+    // 添加新blog
+    await api
+    .post('/api/blogs')
+    .send(newBlog)
+    .expect(201)
+    .expect('Content-Type', /application\/json/)
 
-  const blogsAtEnd = await helper.blogsInDb()
-  const likes = blogsAtEnd.map(r => r.likes)
-  const zero = likes[helper.initialBlogs.length]
-  // 验证长度是否加上
-  expect(blogsAtEnd).toHaveLength(helper.initialBlogs.length + 1)
-  // 验证新加上的blog的title是否正确
-  expect(zero).toEqual(
-    0
-  )
+    const blogsAtEnd = await helper.blogsInDb()
+    const likes = blogsAtEnd.map(r => r.likes)
+    const zero = likes[helper.initialBlogs.length]
+    // 验证长度是否加上
+    expect(blogsAtEnd).toHaveLength(helper.initialBlogs.length + 1)
+    // 验证新加上的blog的title是否正确
+    expect(zero).toEqual(
+      0
+    )
+
+  })
 
 })
 
-// 测试更新likes
-test('update blog likes', async () => {
-    
-})
 
 afterAll(() => {
   mongoose.connection.close()
