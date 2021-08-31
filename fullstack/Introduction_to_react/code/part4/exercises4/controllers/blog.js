@@ -40,9 +40,7 @@ blogsRouter.post('/', async (request, response, next) => {
 blogsRouter.put('/:id', async (request, response) => {
   // 先获取原值
   let oldBlog = await Blog.findById(request.params.id)
-  console.log('1*oldBlog: ', oldBlog)
   oldBlog = oldBlog.toJSON()
-  console.log('2*oldBlog: ', oldBlog)
   if (!oldBlog) {
     response.status(404).end()
   } else {
@@ -54,7 +52,7 @@ blogsRouter.put('/:id', async (request, response) => {
       likes: body.likes || oldBlog.likes
     }
     const result = await Blog.findByIdAndUpdate(request.params.id, newBlog, {new: true})
-    response.status(200).end()
+    response.status(200).json(result)
   }
 
 })
