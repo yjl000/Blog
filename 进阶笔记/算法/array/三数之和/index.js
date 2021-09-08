@@ -18,7 +18,7 @@ function threeSum(arr, target) {
 
 const nums = [-1, 0, 1, 2, -1, -4]
 const target = 0
-console.log(threeSum2(nums, target))
+console.log(threeSum3(nums, target))
 
 function threeSum2 (arr, target) {
   let set = new Set();
@@ -39,7 +39,53 @@ function threeSum2 (arr, target) {
       }
       set.add(arr[j])
     }
-    set = new Set()
+    set = new Set() // 重置存储器
+  }
+  return res
+}
+
+
+function threeSum3 (arr, target) {
+  if (arr.length < 3) { // 少于3个，不比较
+    return [];
+  }
+  let res = [], seconed, last;
+  arr.sort((a, b) => a - b);
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] > target) { // 排序之后, i比target大，直接退出
+      break;
+    }
+
+    // 去重
+    if (i > 0 && arr[i] === arr[i - 1]) {
+      continue
+    }
+
+    seconed = i + 1 // 指针1，指向第二个数
+    last = arr.length - 1 // 指针2，指向第三个数
+    // 指针移动
+    while (seconed < last) {
+      // 求和
+      const sum = arr[i] + arr[seconed] + arr[last]
+      if (sum === target) { // 符合条件
+        res.push([arr[i], arr[seconed], arr[last]])
+        // 再度去重
+        while (seconed < last && arr[seconed] === arr[seconed + 1]) {
+          seconed++
+        }
+        while (seconed < last && arr[last] === arr[last - 1]) {
+          last--
+        }
+        // 移动指针
+        seconed++
+        last--
+      } else if (sum < target) { // 三个数加起来比目标值小，证明第一个数比较小，左边的指针往右移动
+        seconed++
+      } else if (sum > target) { // 三个数加起来比目标值大，证明最后一个比较大，右边的指针往左移动
+        last--
+      }
+    }
+    
   }
   return res
 }
