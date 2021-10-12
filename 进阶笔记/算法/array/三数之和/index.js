@@ -1,7 +1,7 @@
 function threeSum(arr, target) {
   let map = new Map();
   let res = [];
-  for (let i = 0; i < arr.length - 2; i++) { // 减去2的原因是三个数之和，会拿掉前面两个
+  for (let i = 0; i < arr.length - 2; i++) { // 减去2的原因是两次循环，第二次从1开始，所以最外层药少循环一次
     const first = arr[i]; // 第一个数
     for (let j = i + 1; j < arr.length; j++) {
       // 假设arr[j]是第三个数，那目标值减去第一个和第三个，就可以得出第二个

@@ -19,7 +19,7 @@ function flatStack (arr) {
     const last = stack.pop()
     if (Array.isArray(last)) { // 如果出来的值是一个数组，铺开一层继续入栈
       stack.push(...last)
-    } else { // 如果不是数组，就反着放入结果数组中
+    } else { // 如果不是数组，就反着放入结果数组中（栈的先进后出）
       result.unshift(last) // 每次从前面插入到结果数组
     }
   }
