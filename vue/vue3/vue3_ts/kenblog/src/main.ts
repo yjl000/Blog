@@ -4,6 +4,7 @@ import { createStore } from 'vuex'
 import Home from './views/Home.vue'
 import Login from './views/Login.vue'
 import Column from './views/ColumnDetail.vue'
+import Test from './views/Test.vue'
 import App from './App.vue'
 
 const store = createStore({
@@ -38,6 +39,11 @@ const router = createRouter({
       path: '/column/:id',
       name: 'column',
       component: Column
+    },
+    {
+      path: '/test',
+      name: 'test',
+      component: Test
     }
   ]
 })
