@@ -89,13 +89,13 @@ contract ZBGameMode {
         return 1;
     }
 
-    function beforeMatchStart(bytes) external {
+    function beforeMatchStart(bytes memory) external {
     }
 
-    function afterInitialDraw(bytes) external {
+    function afterInitialDraw(bytes memory) external {
     }
 
-    function getCustomUi() external view returns (bytes) {
+    function getCustomUi() external view returns (bytes memory) {
         return new bytes(0);
     }
 }

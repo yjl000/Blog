@@ -24,17 +24,32 @@ library ZBSerializer {
 
     // GameState deserialization
 
-    function init(ZBGameMode.GameState memory self, bytes memory serializedGameState) internal pure {
-        SerialityBinaryStream.BinaryStream memory stream =
-            SerialityBinaryStream.BinaryStream(serializedGameState, serializedGameState.length);
+    // function init(ZBGameMode.GameState memory self, bytes memory serializedGameState) internal pure {
+    //     SerialityBinaryStream.BinaryStream memory stream =
+    //         SerialityBinaryStream.BinaryStream(serializedGameState, serializedGameState.length);
 
-        self.id = stream.readInt64();
-        self.currentPlayerIndex = stream.readUint8();
+    //     self.id = stream.readInt64();
+    //     self.currentPlayerIndex = stream.readUint8();
 
-        self.playerStates = new ZBGameMode.PlayerState[](2);
-        for (uint i = 0; i < self.playerStates.length; i++) {
-            self.playerStates[i] = deserializePlayerState(stream);
-        }
+    //     self.playerStates = new ZBGameMode.PlayerState[](2);
+    //     for (uint i = 0; i < self.playerStates.length; i++) {
+    //         self.playerStates[i] = deserializePlayerState(stream);
+    //     }
+    // }
+
+    function init(bytes memory serializedGameState) internal pure returns (ZBGameMode.GameState memory) {
+      SerialityBinaryStream.BinaryStream memory stream =
+          SerialityBinaryStream.BinaryStream(serializedGameState, serializedGameState.length);
+
+      ZBGameMode.GameState memory self;
+      self.id = stream.readInt64();
+      self.currentPlayerIndex = stream.readUint8();
+
+      self.playerStates = new ZBGameMode.PlayerState[](2);
+      for (uint i = 0; i < self.playerStates.length; i++) {
+          self.playerStates[i] = deserializePlayerState(stream);
+      }
+      return self;
     }
 
     function deserializePlayerState(SerialityBinaryStream.BinaryStream memory stream) private pure returns (ZBGameMode.PlayerState memory) {
@@ -132,17 +147,17 @@ library ZBSerializer {
         self.mouldName = mouldName;
     }
 
-    function changeDefense(ZBGameMode.CardInstance memory self, uint8 defense) internal pure {
+    function changeDefense(ZBGameMode.CardInstance memory self, int32 defense) internal pure {
         self.defense = defense;
         self.defenseInherited = false;
     }
 
-    function changeAttack(ZBGameMode.CardInstance memory self, uint8 attack) internal pure {
+    function changeAttack(ZBGameMode.CardInstance memory self, int32 attack) internal pure {
         self.attack = attack;
         self.attackInherited = false;
     }
 
-    function changeGooCost(ZBGameMode.CardInstance memory self, uint8 gooCost) internal pure {
+    function changeGooCost(ZBGameMode.CardInstance memory self, int8 gooCost) internal pure {
         self.gooCost = gooCost;
         self.gooCostInherited = false;
     }
@@ -309,7 +324,7 @@ library ZBSerializer {
     }
 
     function serializeStartCustomUiElement(SerialityBinaryStream.BinaryStream memory stream, ZBEnum.CustomUiElement element) private pure {
-        stream.writeInt32(int32(element));
+        stream.writeInt32(int32(uint32(element)));
     }
 
     function serializeStartCustomUiElement(
