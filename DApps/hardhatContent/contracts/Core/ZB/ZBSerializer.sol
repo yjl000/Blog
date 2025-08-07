@@ -164,13 +164,20 @@ library ZBSerializer {
 
     // SerializedGameStateChanges
 
-    function init(SerializedGameStateChanges memory self) internal pure {
-        init(self, defaultSerializedGameStateChangesBufferSize);
-    }
+    // function init(SerializedGameStateChanges memory self) internal pure {
+    //     init(self, defaultSerializedGameStateChangesBufferSize);
+    // }
 
-    function init(SerializedGameStateChanges memory self, uint bufferSize) internal pure {
-        self.stream = SerialityBinaryStream.BinaryStream(new bytes(bufferSize), bufferSize);
+    function init(SerializedGameStateChanges memory self) internal pure returns (SerializedGameStateChanges memory) {
+      return init(self, defaultSerializedGameStateChangesBufferSize);
     }
+    function init(SerializedGameStateChanges memory self, uint bufferSize) internal pure returns (SerializedGameStateChanges memory) {
+        self.stream = SerialityBinaryStream.BinaryStream(new bytes(bufferSize), bufferSize);
+        return self;
+    }
+    // function init(SerializedGameStateChanges memory self, uint bufferSize) internal pure {
+    //     self.stream = SerialityBinaryStream.BinaryStream(new bytes(bufferSize), bufferSize);
+    // }
 
     function getBytes(SerializedGameStateChanges memory self) internal pure returns (bytes memory) {
         return self.stream.buffer;
@@ -180,11 +187,13 @@ library ZBSerializer {
         emit GameStateChanges(getBytes(self));
     }
 
-    function changePlayerDefense(SerializedGameStateChanges memory self, ZBGameMode.Player player, uint8 defense) internal pure returns (uint) {
+    function changePlayerDefense(SerializedGameStateChanges memory self, ZBGameMode.Player player, uint8 defense) internal pure returns (SerializedGameStateChanges memory) {
         SerialityBinaryStream.BinaryStream memory stream = self.stream;
 
         serializeStartGameStateChangeAction(stream, ZBEnum.GameStateChangeAction.SetPlayerDefense, player);
         stream.writeUint8(uint8(defense));
+        self.stream = stream;
+        return self;
     }
 
     function changePlayerCurrentGoo(SerializedGameStateChanges memory self, ZBGameMode.Player player, uint8 currentGoo) internal pure {
