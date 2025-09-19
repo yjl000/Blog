@@ -12,6 +12,8 @@ node_modules
 /dist/*
 prettier.config.js
 
+artifacts
+
 # local env files
 .env.local
 .env.*.local
