@@ -5,8 +5,8 @@ pragma solidity ^0.8.24;
 import {AggregatorV3Interface} from "@chainlink/contracts/src/v0.8/shared/interfaces/AggregatorV3Interface.sol";
 import {PriceConverter} from "./priceConverter.sol";
 import {MathLibrary} from "./MathLibrary.sol";
-using PriceConverter for uint256;
-using MathLibrary for uint256;
+
+error NotOwner();
 
 contract FundMe {
     // send funds into our contract 
@@ -15,15 +15,17 @@ contract FundMe {
         uint256 amountFunded;
         uint256 fundNums;
     }
+    using PriceConverter for uint256;
+    using MathLibrary for uint256;
     address[] public funders;
     mapping(address => FundInfo) public addressToFundInfo;
     uint256 public constant MINIMUM_USD = 5 * 10 ** 18;
 
     AggregatorV3Interface priceFeed = AggregatorV3Interface(0x694AA1769357215DE4FAC081bf1f309aDC325306);
     
-    address public owner;
+    address public /* immutable */ i_owner;
     constructor() {
-        owner = msg.sender;
+        i_owner = msg.sender;
     }
 
     function fund() payable public {
@@ -60,7 +62,8 @@ contract FundMe {
     }
 
     modifier onlyOwner {
-        require(msg.sender == owner, "must be owner");
+        // require(msg.sender == i_owner, "must be owner");
+        if (msg.sender != i_owner) revert NotOwner(); 
         _;
     }
 
@@ -83,5 +86,24 @@ contract FundMe {
         // call
         (bool callSuccess,) = payable(msg.sender).call{value:  address(this).balance}("");
         require(callSuccess, "Call failed");
+    }
+
+    // Ether is sent to contract
+    //      is msg.data empty?
+    //          /   \
+    //         yes  no
+    //         /     \
+    //    receive()?  fallback() // fallback handler msg.data:  emit FallbackCalled(msg.data);
+    //     /   \
+    //   yes   no
+    //  /        \
+    //receive()  fallback()
+
+    fallback() external payable { 
+        fund();
+    }
+
+    receive() external payable {
+        fund();
     }
 }
